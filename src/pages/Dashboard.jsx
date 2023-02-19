@@ -1,20 +1,9 @@
-import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Sort from "../components/Sort";
 import CardRequest from "../components/CardRequest";
 import SuggestionsEmpty from "../components/SuggestionsEmpty";
 
-function App() {
-  const [datas, setDatas] = useState([]);
-
-  useEffect(() => {
-    fetch("../src/data/data.json")
-      .then((response) => response.json())
-      .then((data) => setDatas(data));
-  }, []);
-
-  console.log(datas);
-
+function Dashboard({ datas }) {
   return (
     <div className="App">
       <Header datas={datas} />
@@ -42,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default Dashboard;

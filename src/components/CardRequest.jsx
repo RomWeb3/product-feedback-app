@@ -1,8 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function CardRequest({ productRequest }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="bg-white w-full px-6 py-6 rounded-[10px]">
+    <div
+      className="bg-white w-full px-6 py-6 rounded-[10px]"
+      onClick={() =>
+        navigate(`/product-feedback-app/feedback/${productRequest.id}`)
+      }
+    >
       <h2 className="font-bold text-darkblue text-sm">
         {productRequest.title}
       </h2>

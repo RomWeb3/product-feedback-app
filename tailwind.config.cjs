@@ -13,6 +13,7 @@ module.exports = {
         gray: "#647196",
         orange: "#F49F85",
         lightblue: "#62BCFA",
+        semiblack: "rgba(0, 0, 0, 0.5)",
         gradient:
           "radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%)",
       },

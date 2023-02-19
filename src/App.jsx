@@ -1,35 +1,18 @@
-import { useState, useEffect } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import Sort from "./components/Sort";
-import CardRequest from "./components/CardRequest";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import FeedbackDetail from "./pages/FeedbackDetail";
 
 function App() {
-  const [datas, setDatas] = useState([]);
-
-  useEffect(() => {
-    fetch("../src/data/data.json")
-      .then((response) => response.json())
-      .then((data) => setDatas(data));
-  }, []);
-
-  console.log(datas);
-
   return (
     <div className="App">
-      <Header />
-      <Sort />
-      <main className="bg-verylightgray min-h-screen py-8 px-6 flex flex-col gap-4">
-        {datas != [] > 0 &&
-          datas.productRequests
-            .filter((productRequest) => productRequest.status === "suggestion")
-            .map((productRequest) => (
-              <CardRequest
-                productRequest={productRequest}
-                key={productRequest.id}
-              />
-            ))}
-      </main>
+      <Routes>
+        <Route path="/product-feedback-app/" element={<Dashboard />} />
+        <Route
+          path="/product-feedback-app/feedback/:feedbackId"
+          element={<FeedbackDetail />}
+        />
+      </Routes>
     </div>
   );
 }

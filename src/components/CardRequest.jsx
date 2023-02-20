@@ -33,7 +33,11 @@ function CardRequest({ productRequest }) {
             alt="icon comments"
           />
           {productRequest.comments?.length > 0
-            ? productRequest.comments.length
+            ? productRequest.comments.length +
+              productRequest.comments?.reduce(
+                (total, comment) => total + (comment.replies?.length || 0),
+                0
+              )
             : 0}
         </div>
       </div>

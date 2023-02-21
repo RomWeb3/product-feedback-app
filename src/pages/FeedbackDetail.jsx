@@ -9,10 +9,24 @@ function FeedbackDetail({ datas }) {
   const navigate = useNavigate();
   const { feedbackId } = useParams();
   const productRequests = datas.productRequests;
+  const currentUser = datas.currentUser;
 
   const filteredRequests = productRequests?.filter(
     (productRequest) => productRequest.id === feedbackId * 1
   );
+
+  const handleNewComment = () => {
+    const comment = {
+      id: Math.random().toString(36).substring(7),
+      content: newComment,
+      user: {
+        image: currentUser.image,
+        name: currentUser.name,
+        username: currentUser.username,
+      },
+      replies: [],
+    };
+  };
 
   return (
     <div className="min-h-screen p-6 bg-verylightgray">

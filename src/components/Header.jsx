@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header({ datas }) {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const navigate = useNavigate();
 
   const closeMenu = (e) => {
     if (e.target === e.currentTarget) {
@@ -113,7 +115,10 @@ function Header({ datas }) {
             <div className="w-full h-[178px] bg-white rounded-[10px] px-6 flex flex-col justify-center">
               <div className="flex justify-between items-center mb-6">
                 <h4 className="font-bold text-lg text-darkblue">Roadmap</h4>
-                <button className="font-semibold text-sm text-blue underline">
+                <button
+                  className="font-semibold text-sm text-blue underline"
+                  onClick={() => navigate("/product-feedback-app/roadmap")}
+                >
                   View
                 </button>
               </div>

@@ -6,11 +6,33 @@ function CardRequest({ productRequest }) {
 
   return (
     <div
-      className="bg-white w-full px-6 py-6 rounded-[10px]"
+      className="bg-white w-full px-6 py-6 cursor-pointer"
+      style={{
+        borderTop:
+          productRequest.status === "planned"
+            ? "6px solid #F49F85"
+            : productRequest.status === "in-progress"
+            ? "6px solid #AD1FEA"
+            : productRequest.status === "live"
+            ? "6px solid #62BCFA"
+            : "none",
+        borderRadius:
+          productRequest.status === "planned" ||
+          productRequest.status === "in-progress" ||
+          productRequest.status === "live"
+            ? "5px 5px 10px 10px"
+            : "10px",
+      }}
       onClick={() =>
         navigate(`/product-feedback-app/feedback/${productRequest.id}`)
       }
     >
+      {productRequest.status === "in-progress" && (
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-2 h-2 bg-violet rounded-full"></div>
+          <p className="text-gray text-sm">In Progress</p>
+        </div>
+      )}
       <h2 className="font-bold text-darkblue text-sm">
         {productRequest.title}
       </h2>

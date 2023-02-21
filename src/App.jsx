@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import FeedbackDetail from "./pages/FeedbackDetail";
 import NewFeedback from "./pages/NewFeedback";
 import EditFeedback from "./pages/EditFeedback";
+import Roadmap from "./pages/Roadmap";
 
 function App() {
   const [datas, setDatas] = useState([]);
@@ -35,6 +36,10 @@ function App() {
         <Route
           path="/product-feedback-app/edit-feedback/:feedbackId"
           element={<EditFeedback datas={datas} />}
+        />
+        <Route
+          path="/product-feedback-app/roadmap"
+          element={<Roadmap datas={datas} />}
         />
       </Routes>
     </div>

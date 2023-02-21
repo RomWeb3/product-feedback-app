@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Dashboard from "./pages/Dashboard";
 import FeedbackDetail from "./pages/FeedbackDetail";
@@ -9,6 +9,11 @@ import Roadmap from "./pages/Roadmap";
 
 function App() {
   const [datas, setDatas] = useState([]);
+  const navigate = useNavigate();
+
+  const onNavigate = () => {
+    navigate("/product-feedback-app/new-feedback");
+  };
 
   useEffect(() => {
     fetch("../src/data/data.json")
@@ -23,7 +28,7 @@ function App() {
       <Routes>
         <Route
           path="/product-feedback-app/"
-          element={<Dashboard datas={datas} />}
+          element={<Dashboard datas={datas} onNavigate={onNavigate} />}
         />
         <Route
           path="/product-feedback-app/feedback/:feedbackId"
@@ -39,7 +44,7 @@ function App() {
         />
         <Route
           path="/product-feedback-app/roadmap"
-          element={<Roadmap datas={datas} />}
+          element={<Roadmap datas={datas} onClick={onNavigate} />}
         />
       </Routes>
     </div>

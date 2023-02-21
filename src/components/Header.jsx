@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Header({ datas }) {
+function Header({ datas, category, setCategory }) {
   const [showMenu, setShowMenu] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const navigate = useNavigate();
 
   const closeMenu = (e) => {
@@ -53,61 +52,79 @@ function Header({ datas }) {
             <div className="w-full h-[178px] bg-white rounded-[10px] px-6 py-6 flex flex-wrap gap-2 items-center">
               <button
                 className={`${
-                  selectedCategory === "All"
+                  category === "all"
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => setSelectedCategory("All")}
+                onClick={() => {
+                  setCategory("all");
+                  setShowMenu(false);
+                }}
               >
                 All
               </button>
               <button
                 className={`${
-                  selectedCategory === "UI"
+                  category === "ui"
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => setSelectedCategory("UI")}
+                onClick={() => {
+                  setCategory("ui");
+                  setShowMenu(false);
+                }}
               >
                 UI
               </button>
               <button
                 className={`${
-                  selectedCategory === "UX"
+                  category === "ux"
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => setSelectedCategory("UX")}
+                onClick={() => {
+                  setCategory("ux");
+                  setShowMenu(false);
+                }}
               >
                 UX
               </button>
               <button
                 className={`${
-                  selectedCategory === "Enhancement"
+                  category === "enhancement"
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => setSelectedCategory("Enhancement")}
+                onClick={() => {
+                  setCategory("enhancement");
+                  setShowMenu(false);
+                }}
               >
                 Enhancement
               </button>
               <button
                 className={`${
-                  selectedCategory === "Bug"
+                  category === "bug"
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => setSelectedCategory("Bug")}
+                onClick={() => {
+                  setCategory("bug");
+                  setShowMenu(false);
+                }}
               >
                 Bug
               </button>
               <button
                 className={`${
-                  selectedCategory === "Feature"
+                  category === "feature"
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => setSelectedCategory("Feature")}
+                onClick={() => {
+                  setCategory("feature");
+                  setShowMenu(false);
+                }}
               >
                 Feature
               </button>

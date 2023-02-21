@@ -15,7 +15,7 @@ function FeedbackDetail({ datas }) {
   );
 
   return (
-    <div className="h-full p-6 bg-verylightgray">
+    <div className="min-h-screen p-6 bg-verylightgray">
       <div className="flex justify-between mb-6">
         <div
           className="flex items-center gap-4 cursor-pointer"
@@ -24,7 +24,12 @@ function FeedbackDetail({ datas }) {
           <img src="/assets/shared/icon-arrow-left.svg" alt="icon arrow left" />
           <p className="text-sm font-bold text-gray">Go Back</p>
         </div>
-        <button className="px-4 py-[10.5px] bg-blue rounded-[10px] text-lightgray text-sm font-bold">
+        <button
+          className="px-4 py-[10.5px] bg-blue rounded-[10px] text-lightgray text-sm font-bold"
+          onClick={() =>
+            navigate(`/product-feedback-app/edit-feedback/${feedbackId}`)
+          }
+        >
           Edit Feedback
         </button>
       </div>
@@ -80,10 +85,10 @@ function FeedbackDetail({ datas }) {
                 {!comment.replies?.length > 0 ? (
                   <div className="w-full h-[1px] bg-separator opacity-25 my-2"></div>
                 ) : (
-                  comment.replies?.map((reply) => (
+                  comment.replies?.map((reply, index) => (
                     <div
-                      className="flex flex-col gap-4 ml-6 mt-2"
-                      key={Date.now() + reply.user.name}
+                      className="flex flex-col gap-4 mt-2 relative border-l-[1px] border-border pl-6"
+                      key={index}
                     >
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-4">

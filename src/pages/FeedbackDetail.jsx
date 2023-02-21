@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardRequest from "../components/CardRequest";
 
-function FeedbackDetail({ datas }) {
+function FeedbackDetail({ datas, setDatas }) {
   const [newComment, setNewComment] = useState("");
+  const [reply, setReply] = useState([]);
+  const [newReply, setNewReply] = useState("");
   const maxCharacters = 250;
   const charactersLeft = maxCharacters - newComment.length;
   const navigate = useNavigate();
@@ -11,7 +13,7 @@ function FeedbackDetail({ datas }) {
   const productRequests = datas.productRequests;
   const currentUser = datas.currentUser;
 
-  const filteredRequests = productRequests?.filter(
+  const filteredRequest = productRequests?.filter(
     (productRequest) => productRequest.id === feedbackId * 1
   );
 
@@ -26,6 +28,95 @@ function FeedbackDetail({ datas }) {
       },
       replies: [],
     };
+    const updatedProductRequests = productRequests.map((productRequest) => {
+      if (productRequest.id === feedbackId * 1) {
+        return {
+          ...productRequest,
+          comments: [...productRequest.comments, comment],
+        };
+      }
+      return productRequest;
+    });
+    setDatas({
+      ...datas,
+      productRequests: updatedProductRequests,
+    });
+    setNewComment("");
+  };
+
+  const handleDeleteComment = (commentId) => {
+    const updatedProductRequests = productRequests.map((productRequest) => {
+      if (productRequest.id === feedbackId * 1) {
+        return {
+          ...productRequest,
+          comments: productRequest.comments.filter(
+            (comment) => comment.id !== commentId
+          ),
+        };
+      }
+      return productRequest;
+    });
+    setDatas({
+      ...datas,
+      productRequests: updatedProductRequests,
+    });
+  };
+
+  const handleReplyClick = (commentId) => {
+    const replyIndex = reply.findIndex((r) => r.commentId === commentId);
+    if (replyIndex === -1) {
+      // if reply state doesn't exist for this comment, create it
+      setReply([...reply, { commentId, value: true }]);
+    } else {
+      // if reply state already exists for this comment, toggle its value
+      setReply([
+        ...reply.slice(0, replyIndex),
+        { commentId, value: !reply[replyIndex].value },
+        ...reply.slice(replyIndex + 1),
+      ]);
+    }
+  };
+
+  const isReplyVisible = (commentId) => {
+    const replyState = reply.find((r) => r.commentId === commentId);
+    return replyState ? replyState.value : false;
+  };
+
+  const handleNewReply = (commentId) => {
+    const updatedProductRequests = productRequests.map((productRequest) => {
+      if (productRequest.id === feedbackId * 1) {
+        return {
+          ...productRequest,
+          comments: productRequest.comments.map((comment) => {
+            if (comment.id === commentId) {
+              return {
+                ...comment,
+                replies: [
+                  ...comment.replies,
+                  {
+                    id: Math.random().toString(36).substring(7),
+                    content: newReply,
+                    user: {
+                      image: currentUser.image,
+                      name: currentUser.name,
+                      username: currentUser.username,
+                    },
+                  },
+                ],
+              };
+            }
+            return comment;
+          }),
+        };
+      }
+      return productRequest;
+    });
+    setDatas({
+      ...datas,
+      productRequests: updatedProductRequests,
+    });
+    setNewReply("");
+    handleReplyClick(commentId);
   };
 
   return (
@@ -49,7 +140,7 @@ function FeedbackDetail({ datas }) {
       </div>
 
       {datas != [] > 0 &&
-        filteredRequests.map((productRequest) => (
+        filteredRequest.map((productRequest) => (
           <CardRequest
             productRequest={productRequest}
             key={productRequest.id}
@@ -59,7 +150,7 @@ function FeedbackDetail({ datas }) {
       <div className="bg-white w-full p-6 rounded-[10px] mt-6">
         <h5 className="font-bold text-lg text-darkblue tracking-tighter mb-6">
           {datas != [] > 0 &&
-            filteredRequests.map((productRequest) => {
+            filteredRequest.map((productRequest) => {
               const numComments = productRequest.comments?.length;
               const numReplies = productRequest.comments?.reduce(
                 (total, comment) => total + (comment.replies?.length || 0),
@@ -72,7 +163,7 @@ function FeedbackDetail({ datas }) {
             })}
         </h5>
         {datas != [] > 0 &&
-          filteredRequests.map((productRequest) =>
+          filteredRequest.map((productRequest) =>
             productRequest.comments?.map((comment) => (
               <div className="flex flex-col gap-4 mb-6" key={comment.id}>
                 <div className="flex justify-between items-center">
@@ -91,11 +182,37 @@ function FeedbackDetail({ datas }) {
                       </p>
                     </div>
                   </div>
-                  <button className="font-semibold text-sm text-blue">
-                    Reply
-                  </button>
+                  {comment.user.username !== currentUser.username ? (
+                    <button
+                      className="font-semibold text-sm text-blue"
+                      onClick={() => handleReplyClick(comment.id)}
+                    >
+                      Reply
+                    </button>
+                  ) : (
+                    <button
+                      className="font-semibold text-sm text-red"
+                      onClick={() => handleDeleteComment(comment.id)}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
                 <div className="text-sm text-gray">{comment.content}</div>
+                {isReplyVisible(comment.id) && (
+                  <div className="flex flex-col">
+                    <textarea
+                      className="mb-4 bg-verylightgray w-full h-[80px] rounded-[5px] p-4 resize-none text-sm"
+                      type="text"
+                      placeholder="Type your reply here"
+                      value={newReply}
+                      onChange={(e) => setNewReply(e.target.value)}
+                    />
+                    <button className="w-[117px] self-end px-4 py-[10.5px] bg-violet rounded-[10px] text-lightgray text-sm font-bold">
+                      Post Reply
+                    </button>
+                  </div>
+                )}
                 {!comment.replies?.length > 0 ? (
                   <div className="w-full h-[1px] bg-separator opacity-25 my-2"></div>
                 ) : (
@@ -151,7 +268,10 @@ function FeedbackDetail({ datas }) {
         />
         <div className="flex justify-between items-center">
           <p className="text-sm text-gray">{charactersLeft} Characters left</p>
-          <button className="text-sm font-bold text-lightgray bg-violet rounded-[10px] px-4 py-[10.35px]">
+          <button
+            className="text-sm font-bold text-lightgray bg-violet rounded-[10px] px-4 py-[10.35px]"
+            onClick={handleNewComment}
+          >
             Post Comment
           </button>
         </div>

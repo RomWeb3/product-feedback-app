@@ -32,7 +32,7 @@ function App() {
         />
         <Route
           path="/product-feedback-app/feedback/:feedbackId"
-          element={<FeedbackDetail datas={datas} />}
+          element={<FeedbackDetail datas={datas} setDatas={setDatas} />}
         />
         <Route
           path="/product-feedback-app/new-feedback"

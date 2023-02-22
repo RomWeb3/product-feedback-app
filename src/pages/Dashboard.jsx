@@ -2,15 +2,24 @@ import Header from "../components/Header";
 import Sort from "../components/Sort";
 import CardRequest from "../components/CardRequest";
 import SuggestionsEmpty from "../components/SuggestionsEmpty";
+import Menu from "../components/Menu";
 import { useState } from "react";
 
 function Dashboard({ datas, onNavigate }) {
+  const [showMenu, setShowMenu] = useState(false);
   const [category, setCategory] = useState("all");
 
   return (
     <div className="App">
-      <Header datas={datas} category={category} setCategory={setCategory} />
+      <Header showMenu={showMenu} setShowMenu={setShowMenu} />
       <Sort onClick={onNavigate} />
+      <Menu
+        datas={datas}
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+        category={category}
+        setCategory={setCategory}
+      />
       <main className="bg-verylightgray min-h-screen py-8 px-6 flex flex-col gap-4">
         {datas != [] > 0 &&
           (datas.productRequests.filter(

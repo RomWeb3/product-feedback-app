@@ -237,9 +237,21 @@ function FeedbackDetail({ datas, setDatas }) {
                             </p>
                           </div>
                         </div>
-                        <button className="font-semibold text-sm text-blue">
-                          Reply
-                        </button>
+                        {reply.user.username !== currentUser.username ? (
+                          <button
+                            className="font-semibold text-sm text-blue"
+                            // onClick={() => handleReplyClick(comment.id)}
+                          >
+                            Reply
+                          </button>
+                        ) : (
+                          <button
+                            className="font-semibold text-sm text-red"
+                            // onClick={() => handleDeleteComment(comment.id)}
+                          >
+                            Delete
+                          </button>
+                        )}
                       </div>
                       <div className="text-sm text-gray">
                         <span className="text-violet font-semibold">

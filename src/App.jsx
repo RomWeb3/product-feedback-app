@@ -46,6 +46,10 @@ function App() {
           path="/product-feedback-app/roadmap"
           element={<Roadmap datas={datas} onClick={onNavigate} />}
         />
+        <Route
+          path="*"
+          element={<Dashboard datas={datas} onNavigate={onNavigate} />}
+        />
       </Routes>
     </div>
   );

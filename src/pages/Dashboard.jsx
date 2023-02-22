@@ -10,9 +10,8 @@ function Dashboard({ datas, onNavigate }) {
   const [category, setCategory] = useState("all");
 
   return (
-    <div className="App">
+    <div className="App relative">
       <Header showMenu={showMenu} setShowMenu={setShowMenu} />
-      <Sort onClick={onNavigate} />
       <Menu
         datas={datas}
         showMenu={showMenu}
@@ -20,6 +19,8 @@ function Dashboard({ datas, onNavigate }) {
         category={category}
         setCategory={setCategory}
       />
+      <Sort onClick={onNavigate} />
+
       <main className="bg-verylightgray min-h-screen py-8 px-6 flex flex-col gap-4">
         {datas != [] > 0 &&
           (datas.productRequests.filter(

@@ -16,18 +16,14 @@ function Menu({ datas, showMenu, setShowMenu, category, setCategory }) {
   }, {});
 
   return (
-    <div className="absolute w-full h-full">
+    <div>
       {showMenu && (
         <div>
           <div
-            className="w-full bg-semiblack absolute top-72px z-10"
-            style={{ height: "100%" }}
+            className="w-full h-[calc(100%-72px)] bg-semiblack absolute z-10"
             onClick={closeMenu}
           ></div>
-          <div
-            className="w-[271px] bg-verylightgray absolute top-72px right-0 z-20 py-6 px-6 flex flex-col gap-6 transition-all duration-1000 "
-            style={{ height: "calc(100%)" }}
-          >
+          <div className="w-[271px] h-[calc(100%-72px)] bg-verylightgray absolute right-0 z-20 py-6 px-6 flex flex-col gap-6">
             <div className="w-full h-[178px] bg-white rounded-[10px] px-6 py-6 flex flex-wrap gap-2 items-center">
               <button
                 className={`${

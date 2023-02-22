@@ -12,16 +12,21 @@ function Header({ showMenu, setShowMenu }) {
           <h1 className="font-bold text-base">Frontend Mentor</h1>
           <h2 className="font-medium text-sm opacity-75">Feedback Board</h2>
         </div>
-        <div onClick={() => setShowMenu(!showMenu)}>
+        <div
+          className="transition-all duration-1000"
+          onClick={() => setShowMenu(!showMenu)}
+        >
           {!showMenu ? (
             <img
               src="../public/assets/shared/mobile/icon-hamburger.svg"
               alt="icon hamburger"
+              className="transition-all duration-1000"
             />
           ) : (
             <img
               src="../public/assets/shared/mobile/icon-close.svg"
               alt="icon close"
+              className="transition-all duration-1000"
             />
           )}
         </div>

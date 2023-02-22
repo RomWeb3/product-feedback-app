@@ -1,9 +1,9 @@
 import React from "react";
 
-function Sort({ onClick }) {
+function Sort({ onSort, onClick }) {
   return (
     <div className="w-full bg-verydarkblue flex justify-between px-6 py-2 text-white">
-      <div className="flex justify-center items-center gap-2">
+      <div className="flex justify-center items-center gap-2" onClick={onSort}>
         <span className="text-sm">Sort by : </span>
         <span className="text-sm font-medium"> Most Upvotes</span>
         <img

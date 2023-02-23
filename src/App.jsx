@@ -21,7 +21,7 @@ function App() {
       .then((data) => setDatas(data));
   }, []);
 
-  console.log(datas);
+  console.log(datas.productRequests);
 
   return (
     <div className="App">

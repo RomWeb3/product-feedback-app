@@ -3,11 +3,65 @@ import Sort from "../components/Sort";
 import CardRequest from "../components/CardRequest";
 import SuggestionsEmpty from "../components/SuggestionsEmpty";
 import Menu from "../components/Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function Dashboard({ datas, onNavigate }) {
+function Dashboard({ datas = [], onNavigate }) {
   const [showMenu, setShowMenu] = useState(false);
   const [category, setCategory] = useState("all");
+  const [sortBy, setSortBy] = useState("Most Upvotes");
+  const sortedRequests = datas.productRequests || [];
+
+  switch (sortBy) {
+    case "Most Upvotes":
+      sortedRequests.sort((a, b) => b.upvotes - a.upvotes);
+      break;
+
+    case "Least Upvotes":
+      sortedRequests.sort((a, b) => a.upvotes - b.upvotes);
+      break;
+    case "Most Comments":
+      sortedRequests.sort(
+        (a, b) =>
+          (b.comments?.length > 0
+            ? b.comments.length +
+              b.comments?.reduce(
+                (total, comment) => total + (comment.replies?.length || 0),
+                0
+              )
+            : 0) -
+          (a.comments?.length > 0
+            ? a.comments.length +
+              a.comments?.reduce(
+                (total, comment) => total + (comment.replies?.length || 0),
+                0
+              )
+            : 0)
+      );
+      break;
+
+    case "Least Comments":
+      sortedRequests.sort(
+        (a, b) =>
+          (a.comments?.length > 0
+            ? a.comments.length +
+              a.comments?.reduce(
+                (total, comment) => total + (comment.replies?.length || 0),
+                0
+              )
+            : 0) -
+          (b.comments?.length > 0
+            ? b.comments.length +
+              b.comments?.reduce(
+                (total, comment) => total + (comment.replies?.length || 0),
+                0
+              )
+            : 0)
+      );
+      break;
+
+    default:
+      break;
+  }
 
   return (
     <div className="App relative">
@@ -19,15 +73,15 @@ function Dashboard({ datas, onNavigate }) {
         category={category}
         setCategory={setCategory}
       />
-      <Sort onClick={onNavigate} />
+      <Sort onClick={onNavigate} sortBy={sortBy} setSortBy={setSortBy} />
 
       <main className="bg-verylightgray min-h-screen py-8 px-6 flex flex-col gap-4">
         {datas != [] > 0 &&
-          (datas.productRequests.filter(
+          (sortedRequests.filter(
             (productRequest) => productRequest.status === "suggestion"
           ).length > 0 ? (
             category === "all" ? (
-              datas.productRequests
+              sortedRequests
                 .filter(
                   (productRequest) => productRequest.status === "suggestion"
                 )
@@ -38,7 +92,7 @@ function Dashboard({ datas, onNavigate }) {
                   />
                 ))
             ) : (
-              datas.productRequests
+              sortedRequests
                 .filter(
                   (productRequest) => productRequest.status === "suggestion"
                 )

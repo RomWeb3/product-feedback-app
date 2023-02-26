@@ -9,7 +9,7 @@ function Sort({ onClick, sortBy, setSortBy }) {
   };
 
   return (
-    <div className="w-full bg-verydarkblue flex justify-between px-6 py-2 text-white relative md:mt-10 md:rounded-[10px]">
+    <div className="w-full max-w-[825px] bg-verydarkblue flex justify-between px-6 py-2 text-white relative md:mt-10 md:rounded-[10px]">
       <div className="flex">
         <div className="hidden md:flex md:items-center">
           <img

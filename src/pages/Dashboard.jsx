@@ -73,8 +73,8 @@ function Dashboard({ datas = [], onNavigate }) {
   }
 
   return (
-    <div className="App relative md:py-[56px] md:px-10 md:bg-verylightgray">
-      <div className="md:flex md:gap-[10px] md:w-full">
+    <div className="App relative md:py-[56px] md:px-10 md:bg-verylightgray md:flex md:flex-col md:items-center">
+      <div className="md:flex md:gap-[10px] md:w-full md:max-w-[825px]">
         <Header
           showMenu={showMenu}
           setShowMenu={setShowMenu}
@@ -91,7 +91,7 @@ function Dashboard({ datas = [], onNavigate }) {
       </div>
       <Sort onClick={onNavigate} sortBy={sortBy} setSortBy={setSortBy} />
 
-      <main className="bg-verylightgray min-h-screen py-8 px-6 md:px-0 flex flex-col gap-4">
+      <main className="bg-verylightgray w-full min-h-screen py-8 px-6 md:px-0 flex flex-col items-center gap-4">
         {datas != [] > 0 &&
           (sortedRequests.filter(
             (productRequest) => productRequest.status === "suggestion"

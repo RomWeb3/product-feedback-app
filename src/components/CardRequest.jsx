@@ -6,7 +6,7 @@ function CardRequest({ productRequest }) {
 
   return (
     <div
-      className="bg-white w-full px-6 py-6 cursor-pointer"
+      className="w-full max-w-[825px] bg-white px-6 py-6 cursor-pointer"
       style={{
         borderTop:
           productRequest.status === "planned"

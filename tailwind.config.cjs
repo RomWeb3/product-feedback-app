@@ -23,9 +23,8 @@ module.exports = {
     },
     screens: {
       vsm: { max: "360px" },
-      // => @media (min-width: 640px) { ... }
 
-      sm: "640px",
+      sm: "550px",
       // => @media (min-width: 640px) { ... }
 
       md: "768px",

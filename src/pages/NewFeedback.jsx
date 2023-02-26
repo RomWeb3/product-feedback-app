@@ -1,19 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function NewFeedback() {
+function NewFeedback({ datas = [] }) {
   const navigate = useNavigate();
+  const [showCategory, setShowCategory] = useState(false);
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("Feature");
+  const [description, setDescription] = useState("");
+
+  const handleClick = (e) => {
+    setCategory(e.target.innerText);
+    setShowCategory(false);
+  };
+
+  const handleNewFeedback = () => {
+    const newFeedback = {
+      id: datas.productRequests.length + 1,
+      title: title,
+      category: category,
+      description: description,
+      status: "suggestion",
+      upvotes: 0,
+      comments: [],
+    };
+    if (
+      title.length < 2 ||
+      title.length > 30 ||
+      description.length < 2 ||
+      description.length > 500
+    ) {
+      alert("Fields empty or too long");
+    } else {
+      datas.productRequests.push(newFeedback);
+      navigate(`/product-feedback-app/feedback/${newFeedback.id}`);
+    }
+  };
 
   return (
-    <div className="min-h-screen p-6 bg-verylightgray">
+    <div className="w-full min-h-screen p-6 bg-verylightgray flex flex-col justify-center items-center gap-8 sm:gap-10">
       <div
-        className="flex items-center gap-4 cursor-pointer"
+        className="w-full max-w-[540px] flex items-center gap-4 cursor-pointer"
         onClick={() => navigate(`/product-feedback-app/`)}
       >
         <img src="/assets/shared/icon-arrow-left.svg" alt="icon arrow left" />
         <p className="text-sm font-bold text-gray">Go Back</p>
       </div>
-      <div className="mt-[35px] bg-white w-full rounded-[10px] p-6 relative">
+      <div className="mt-[35px] w-full max-w-[540px] bg-white rounded-[10px] p-6 sm:p-[42px] relative">
         <div className="w-10 h-10 rounded-full absolute left-6 top-[-20px]">
           <img
             src="/assets/shared/icon-new-feedback.svg"
@@ -31,16 +63,101 @@ function NewFeedback() {
         </p>
         <input
           type="text"
-          className="w-full h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6"
+          className="w-full max-w-[458px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <h3 className="font-bold text-sm text-darkblue mb-[3px]">Category</h3>
         <p className="text-sm text-gray mb-4">
           Choose a category for your feedback
         </p>
-        <input
-          type="text"
-          className="w-full h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6"
-        />
+        <div
+          className="relative w-full max-w-[458px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6 cursor-pointer flex justify-between items-center"
+          onClick={() => setShowCategory(!showCategory)}
+        >
+          <p className="text-base text-darkblue">{category}</p>
+          <img
+            src="/assets/shared/icon-arrow-down.svg"
+            alt="icon arrow down"
+            className={`${
+              showCategory ? "rotate-180 " : ""
+            } transition-all duration-300`}
+          />
+
+          {showCategory && (
+            <div className="absolute top-16 left-0 w-full rounded-[5px] bg-white shadow-lg">
+              <div
+                className="flex items-center justify-between text-gray hover:text-violet"
+                onClick={(e) => handleClick(e)}
+              >
+                <p className="py-3 px-6">Feature</p>
+                <img
+                  src="../public/assets/shared/icon-check.svg"
+                  alt="icon check"
+                  className={`${
+                    category === "Feature" ? "block" : "hidden"
+                  } transition-all duration-300 px-6`}
+                />
+              </div>
+              <div className="w-full h-[1px] bg-separator"></div>
+              <div
+                className="flex items-center justify-between text-gray hover:text-violet"
+                onClick={(e) => handleClick(e)}
+              >
+                <p className="py-3 px-6">UI</p>
+                <img
+                  src="../public/assets/shared/icon-check.svg"
+                  alt="icon check"
+                  className={`${
+                    category === "UI" ? "block" : "hidden"
+                  } transition-all duration-300 px-6`}
+                />
+              </div>
+              <div className="w-full h-[1px] bg-separator"></div>
+              <div
+                className="flex items-center justify-between text-gray hover:text-violet"
+                onClick={(e) => handleClick(e)}
+              >
+                <p className="py-3 px-6">UX</p>
+                <img
+                  src="../public/assets/shared/icon-check.svg"
+                  alt="icon check"
+                  className={`${
+                    category === "UX" ? "block" : "hidden"
+                  } transition-all duration-300 px-6`}
+                />
+              </div>
+              <div className="w-full h-[1px] bg-separator"></div>
+              <div
+                className="flex items-center justify-between text-gray hover:text-violet"
+                onClick={(e) => handleClick(e)}
+              >
+                <p className="py-3 px-6">Enhancement</p>
+                <img
+                  src="../public/assets/shared/icon-check.svg"
+                  alt="icon check"
+                  className={`${
+                    category === "Enhancement" ? "block" : "hidden"
+                  } transition-all duration-300 px-6`}
+                />
+              </div>
+              <div className="w-full h-[1px] bg-separator"></div>
+              <div
+                className="flex items-center justify-between text-gray hover:text-violet"
+                onClick={(e) => handleClick(e)}
+              >
+                <p className="py-3 px-6">Bug</p>
+                <img
+                  src="../public/assets/shared/icon-check.svg"
+                  alt="icon check"
+                  className={`${
+                    category === "Bug" ? "block" : "hidden"
+                  } transition-all duration-300 px-6`}
+                />
+              </div>
+            </div>
+          )}
+        </div>
         <h3 className="font-bold text-sm text-darkblue mb-[3px]">
           Feedback Detail
         </h3>
@@ -49,13 +166,18 @@ function NewFeedback() {
         </p>
         <textarea
           type="text"
-          className="w-full h-[120px] bg-verylightgray rounded-[5px] p-4 mb-10 resize-none"
+          className="w-full max-w-[458px] h-[120px] bg-verylightgray rounded-[5px] p-4 mb-10 resize-none"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
-        <button className="w-full h-[40px] bg-violet rounded-[10px] text-lightgray text-sm font-bold mb-4">
+        <button
+          className="w-full max-w-[458px] h-[40px] bg-violet rounded-[10px] text-lightgray text-sm font-bold mb-4"
+          onClick={handleNewFeedback}
+        >
           Add Feedback
         </button>
         <button
-          className="w-full h-[40px] bg-darkblue rounded-[10px] text-lightgray text-sm font-bold"
+          className="w-full max-w-[458px] h-[40px] bg-darkblue rounded-[10px] text-lightgray text-sm font-bold"
           onClick={() => navigate(`/product-feedback-app/`)}
         >
           Cancel

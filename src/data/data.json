@@ -1,8 +1,8 @@
 {
   "currentUser": {
-    "image": "./assets/user-images/image-zena.jpg",
-    "name": "Zena Kelley",
-    "username": "velvetround"
+    "image": "./assets/user-images/image-romain.webp",
+    "name": "Romain A",
+    "username": "romweb3"
   },
   "productRequests": [
     {
@@ -20,7 +20,8 @@
             "image": "./assets/user-images/image-suzanne.jpg",
             "name": "Suzanne Chang",
             "username": "upbeat1811"
-          }
+          },
+          "replies": []
         },
         {
           "id": 2,
@@ -29,7 +30,8 @@
             "image": "./assets/user-images/image-thomas.jpg",
             "name": "Thomas Hood",
             "username": "brawnybrave"
-          }
+          },
+          "replies": []
         }
       ]
     },
@@ -48,7 +50,8 @@
             "image": "./assets/user-images/image-elijah.jpg",
             "name": "Elijah Moss",
             "username": "hexagon.bestagon"
-          }
+          },
+          "replies": []
         },
         {
           "id": 4,
@@ -66,7 +69,8 @@
                 "image": "./assets/user-images/image-anne.jpg",
                 "name": "Anne Valentine",
                 "username": "annev1990"
-              }
+              },
+              "replies": []
             },
             {
               "content": "Good point! Using any kind of style extension is great and can be highly customizable, like the ability to change contrast and brightness. I'd prefer not to use one of such extensions, however, for security and privacy reasons.",
@@ -75,7 +79,8 @@
                 "image": "./assets/user-images/image-ryan.jpg",
                 "name": "Ryan Welles",
                 "username": "voyager.344"
-              }
+              },
+              "replies": []
             }
           ]
         }
@@ -96,7 +101,8 @@
             "image": "./assets/user-images/image-george.jpg",
             "name": "George Partridge",
             "username": "soccerviewer8"
-          }
+          },
+          "replies": []
         }
       ]
     },
@@ -115,7 +121,8 @@
             "image": "./assets/user-images/image-javier.jpg",
             "name": "Javier Pollard",
             "username": "warlikeduke"
-          }
+          },
+          "replies": []
         },
         {
           "id": 7,
@@ -124,7 +131,8 @@
             "image": "./assets/user-images/image-roxanne.jpg",
             "name": "Roxanne Travis",
             "username": "peppersprime32"
-          }
+          },
+          "replies": []
         }
       ]
     },
@@ -163,7 +171,8 @@
             "image": "./assets/user-images/image-jackson.jpg",
             "name": "Jackson Barker",
             "username": "countryspirit"
-          }
+          },
+          "replies": []
         }
       ]
     },
@@ -190,7 +199,8 @@
             "image": "./assets/user-images/image-victoria.jpg",
             "name": "Victoria Mejia",
             "username": "arlen_the_marlin"
-          }
+          },
+          "replies": []
         },
         {
           "id": 11,
@@ -199,7 +209,8 @@
             "image": "./assets/user-images/image-jackson.jpg",
             "name": "Jackson Barker",
             "username": "countryspirit"
-          }
+          },
+          "replies": []
         }
       ]
     },
@@ -218,7 +229,8 @@
             "image": "./assets/user-images/image-george.jpg",
             "name": "George Partridge",
             "username": "soccerviewer8"
-          }
+          },
+          "replies": []
         }
       ]
     },
@@ -237,7 +249,8 @@
             "image": "./assets/user-images/image-ryan.jpg",
             "name": "Ryan Welles",
             "username": "voyager.344"
-          }
+          },
+          "replies": []
         }
       ]
     },
@@ -256,7 +269,8 @@
             "image": "./assets/user-images/image-suzanne.jpg",
             "name": "Suzanne Chang",
             "username": "upbeat1811"
-          }
+          },
+          "replies": []
         }
       ]
     },

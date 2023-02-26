@@ -29,7 +29,12 @@ function FeedbackDetail({ datas, setDatas }) {
       replies: [],
     };
     const updatedProductRequests = productRequests.map((productRequest) => {
-      if (productRequest.id === feedbackId * 1) {
+      if (
+        productRequest.id === feedbackId * 1 &&
+        newComment !== "" &&
+        newComment !== " " &&
+        newComment.length <= maxCharacters
+      ) {
         return {
           ...productRequest,
           comments: [...productRequest.comments, comment],
@@ -88,7 +93,13 @@ function FeedbackDetail({ datas, setDatas }) {
         return {
           ...productRequest,
           comments: productRequest.comments.map((comment) => {
-            if (comment.id === commentId) {
+            if (
+              comment.id === commentId &&
+              comment.replies &&
+              newReply !== "" &&
+              newReply !== " " &&
+              newReply.length <= maxCharacters
+            ) {
               return {
                 ...comment,
                 replies: [
@@ -96,11 +107,13 @@ function FeedbackDetail({ datas, setDatas }) {
                   {
                     id: Math.random().toString(36).substring(7),
                     content: newReply,
+                    replyingTo: comment.user.username,
                     user: {
                       image: currentUser.image,
                       name: currentUser.name,
                       username: currentUser.username,
                     },
+                    replies: [],
                   },
                 ],
               };
@@ -119,12 +132,38 @@ function FeedbackDetail({ datas, setDatas }) {
     handleReplyClick(commentId);
   };
 
+  const handleDeleteReply = (commentId, replyId) => {
+    const updatedProductRequests = productRequests.map((productRequest) => {
+      if (productRequest.id === feedbackId * 1) {
+        return {
+          ...productRequest,
+          comments: productRequest.comments.map((comment) => {
+            if (comment.id === commentId) {
+              return {
+                ...comment,
+                replies: comment.replies.filter(
+                  (reply) => reply.id !== replyId
+                ),
+              };
+            }
+            return comment;
+          }),
+        };
+      }
+      return productRequest;
+    });
+    setDatas({
+      ...datas,
+      productRequests: updatedProductRequests,
+    });
+  };
+
   return (
     <div className="min-h-screen p-6 bg-verylightgray">
       <div className="flex justify-between mb-6">
         <div
           className="flex items-center gap-4 cursor-pointer"
-          onClick={() => navigate(`/product-feedback-app/`)}
+          onClick={() => navigate(-1)}
         >
           <img src="/assets/shared/icon-arrow-left.svg" alt="icon arrow left" />
           <p className="text-sm font-bold text-gray">Go Back</p>
@@ -166,7 +205,7 @@ function FeedbackDetail({ datas, setDatas }) {
           filteredRequest.map((productRequest) =>
             productRequest.comments?.map((comment) => (
               <div className="flex flex-col gap-4 mb-6" key={comment.id}>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between itehandleReplyClickms-center">
                   <div className="flex items-center gap-4">
                     <img
                       className="rounded-full w-10 h-10"
@@ -208,7 +247,10 @@ function FeedbackDetail({ datas, setDatas }) {
                       value={newReply}
                       onChange={(e) => setNewReply(e.target.value)}
                     />
-                    <button className="w-[117px] self-end px-4 py-[10.5px] bg-violet rounded-[10px] text-lightgray text-sm font-bold">
+                    <button
+                      className="w-[117px] self-end px-4 py-[10.5px] bg-violet rounded-[10px] text-lightgray text-sm font-bold"
+                      onClick={() => handleNewReply(comment.id)}
+                    >
                       Post Reply
                     </button>
                   </div>
@@ -240,14 +282,16 @@ function FeedbackDetail({ datas, setDatas }) {
                         {reply.user.username !== currentUser.username ? (
                           <button
                             className="font-semibold text-sm text-blue"
-                            // onClick={() => handleReplyClick(comment.id)}
+                            onClick={() => handleReplyClick(comment.id)}
                           >
                             Reply
                           </button>
                         ) : (
                           <button
                             className="font-semibold text-sm text-red"
-                            // onClick={() => handleDeleteComment(comment.id)}
+                            onClick={() =>
+                              handleDeleteReply(comment.id, reply.id)
+                            }
                           >
                             Delete
                           </button>
@@ -259,6 +303,23 @@ function FeedbackDetail({ datas, setDatas }) {
                         </span>{" "}
                         {reply.content}
                       </div>
+                      {isReplyVisible(comment.id) && (
+                        <div className="flex flex-col">
+                          <textarea
+                            className="mb-4 bg-verylightgray w-full h-[80px] rounded-[5px] p-4 resize-none text-sm"
+                            type="text"
+                            placeholder="Type your reply here"
+                            value={newReply}
+                            onChange={(e) => setNewReply(e.target.value)}
+                          />
+                          <button
+                            className="w-[117px] self-end px-4 py-[10.5px] bg-violet rounded-[10px] text-lightgray text-sm font-bold"
+                            onClick={() => handleNewReply(comment.id)}
+                          >
+                            Post Reply
+                          </button>
+                        </div>
+                      )}
                     </div>
                   ))
                 )}

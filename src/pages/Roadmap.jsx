@@ -132,14 +132,16 @@ function Roadmap({ datas, onClick }) {
               src="/assets/shared/icon-arrow-left.svg"
               alt="icon arrow left"
             />
-            <p className="text-sm font-bold text-white">Go Back</p>
+            <p className="text-sm font-bold text-white hover:underline transition-all">
+              Go Back
+            </p>
           </div>
           <h1 className="text-lg font-bold text-white tracking-tighter">
             Roadmap
           </h1>
         </div>
         <button
-          className="bg-violet px-4 py-2.5 rounded-[10px] text-sm cursor-pointer font-bold text-white"
+          className="bg-violet hover:bg-[#C75AF6] transition-all px-4 py-2.5 rounded-[10px] text-sm cursor-pointer font-bold text-white"
           onClick={onClick}
         >
           + Add Feedback

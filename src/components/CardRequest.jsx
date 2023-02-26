@@ -45,7 +45,7 @@ function CardRequest({ productRequest }) {
           <p className="text-gray text-sm">live</p>
         </div>
       )}
-      <h2 className="font-bold text-darkblue text-sm">
+      <h2 className="font-bold text-darkblue hover:text-[#4661E6] transition-all text-sm">
         {productRequest.title}
       </h2>
       <p className="my-2 text-gray text-sm">{productRequest.description}</p>
@@ -54,7 +54,7 @@ function CardRequest({ productRequest }) {
           productRequest.category.slice(1)}
       </div>
       <div className="flex justify-between items-center">
-        <div className="bg-lightgray flex justify-center items-center gap-2.5 rounded-[10px] w-[69px] h-[32px] text-sm font-bold text-darkblue">
+        <div className="bg-lightgray hover:bg-[#CFD7FF] transition-all flex justify-center items-center gap-2.5 rounded-[10px] w-[69px] h-[32px] text-sm font-bold text-darkblue">
           <img
             src="../public/assets/shared/icon-arrow-up.svg"
             alt="icon arrow up"

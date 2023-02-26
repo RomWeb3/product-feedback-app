@@ -9,20 +9,29 @@ function Sort({ onClick, sortBy, setSortBy }) {
   };
 
   return (
-    <div className="w-full bg-verydarkblue flex justify-between px-6 py-2 text-white relative">
-      <div
-        className="flex justify-center items-center gap-2"
-        onClick={() => setShowSortBy(!showSortBy)}
-      >
-        <span className="text-sm">Sort by : </span>
-        <span className="text-sm font-medium">{sortBy}</span>
-        <img
-          src="../public/assets/shared/arrow-down-white.png"
-          alt="icon arrow down"
-          className={`${
-            showSortBy ? "rotate-180 " : ""
-          } transition-all duration-300 w-[10px] h-[10px]`}
-        />
+    <div className="w-full bg-verydarkblue flex justify-between px-6 py-2 text-white relative md:mt-10 md:rounded-[10px]">
+      <div className="flex">
+        <div className="hidden md:flex md:items-center">
+          <img
+            src="/assets/suggestions/icon-suggestions.svg"
+            alt="icon suggestions"
+          />
+          <span className="text-lg font-bold ml-4 mr-9">6 Suggestions</span>
+        </div>
+        <div
+          className="flex justify-center items-center gap-2"
+          onClick={() => setShowSortBy(!showSortBy)}
+        >
+          <span className="text-sm">Sort by : </span>
+          <span className="text-sm font-medium">{sortBy}</span>
+          <img
+            src="../public/assets/shared/arrow-down-white.png"
+            alt="icon arrow down"
+            className={`${
+              showSortBy ? "rotate-180 " : ""
+            } transition-all duration-300 w-[10px] h-[10px]`}
+          />
+        </div>
       </div>
       <button
         className="bg-violet max-w-[134px] w-full vsm:max-w-[110px] py-2.5 rounded-[10px] text-sm cursor-pointer font-bold"
@@ -32,7 +41,7 @@ function Sort({ onClick, sortBy, setSortBy }) {
       </button>
 
       {showSortBy && (
-        <div className="w-[255px] h-[192px] bg-white shadow absolute top-[72px] rounded-[10px]">
+        <div className="w-[255px] h-[192px] bg-white shadow absolute top-[72px] md:left-[219px] rounded-[10px]">
           <div
             className="flex items-center justify-between"
             onClick={(e) => handleClick(e)}

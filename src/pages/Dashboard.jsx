@@ -10,6 +10,15 @@ function Dashboard({ datas = [], onNavigate }) {
   const [category, setCategory] = useState("all");
   const [sortBy, setSortBy] = useState("Most Upvotes");
   const sortedRequests = datas.productRequests || [];
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   switch (sortBy) {
     case "Most Upvotes":
@@ -64,18 +73,25 @@ function Dashboard({ datas = [], onNavigate }) {
   }
 
   return (
-    <div className="App relative">
-      <Header showMenu={showMenu} setShowMenu={setShowMenu} />
-      <Menu
-        datas={datas}
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
-        category={category}
-        setCategory={setCategory}
-      />
+    <div className="App relative md:py-[56px] md:px-10 md:bg-verylightgray">
+      <div className="md:flex md:gap-[10px] md:w-full">
+        <Header
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          screenWidth={screenWidth}
+        />
+        <Menu
+          datas={datas}
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          category={category}
+          setCategory={setCategory}
+          screenWidth={screenWidth}
+        />
+      </div>
       <Sort onClick={onNavigate} sortBy={sortBy} setSortBy={setSortBy} />
 
-      <main className="bg-verylightgray min-h-screen py-8 px-6 flex flex-col gap-4">
+      <main className="bg-verylightgray min-h-screen py-8 px-6 md:px-0 flex flex-col gap-4">
         {datas != [] > 0 &&
           (sortedRequests.filter(
             (productRequest) => productRequest.status === "suggestion"

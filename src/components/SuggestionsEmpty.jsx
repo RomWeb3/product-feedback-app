@@ -5,7 +5,7 @@ function SuggestionsEmpty({ onClick }) {
     <div className="w-full h-[460px] bg-white flex flex-col justify-center items-center px-6 text-center rounded-[10px]">
       <div className="mb-[39px] flex justify-center">
         <img
-          src="../public/assets/suggestions/illustration-empty.svg"
+          src="/assets/suggestions/illustration-empty.svg"
           alt="illustration empty"
         />
       </div>

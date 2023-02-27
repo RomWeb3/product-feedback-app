@@ -18,13 +18,13 @@ function Header({ showMenu, setShowMenu, screenWidth }) {
         >
           {!showMenu ? (
             <img
-              src="../public/assets/shared/mobile/icon-hamburger.svg"
+              src="/assets/shared/mobile/icon-hamburger.svg"
               alt="icon hamburger"
               className="transition-all duration-1000"
             />
           ) : (
             <img
-              src="../public/assets/shared/mobile/icon-close.svg"
+              src="/assets/shared/mobile/icon-close.svg"
               alt="icon close"
               className="transition-all duration-1000"
             />

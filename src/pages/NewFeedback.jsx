@@ -92,7 +92,7 @@ function NewFeedback({ datas = [] }) {
               >
                 <p className="py-3 px-6">Feature</p>
                 <img
-                  src="../public/assets/shared/icon-check.svg"
+                  src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "Feature" ? "block" : "hidden"
@@ -106,7 +106,7 @@ function NewFeedback({ datas = [] }) {
               >
                 <p className="py-3 px-6">UI</p>
                 <img
-                  src="../public/assets/shared/icon-check.svg"
+                  src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "UI" ? "block" : "hidden"
@@ -120,7 +120,7 @@ function NewFeedback({ datas = [] }) {
               >
                 <p className="py-3 px-6">UX</p>
                 <img
-                  src="../public/assets/shared/icon-check.svg"
+                  src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "UX" ? "block" : "hidden"
@@ -134,7 +134,7 @@ function NewFeedback({ datas = [] }) {
               >
                 <p className="py-3 px-6">Enhancement</p>
                 <img
-                  src="../public/assets/shared/icon-check.svg"
+                  src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "Enhancement" ? "block" : "hidden"
@@ -148,7 +148,7 @@ function NewFeedback({ datas = [] }) {
               >
                 <p className="py-3 px-6">Bug</p>
                 <img
-                  src="../public/assets/shared/icon-check.svg"
+                  src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "Bug" ? "block" : "hidden"

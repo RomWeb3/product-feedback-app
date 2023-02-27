@@ -55,17 +55,11 @@ function CardRequest({ productRequest }) {
       </div>
       <div className="flex justify-between items-center">
         <div className="bg-lightgray hover:bg-[#CFD7FF] transition-all flex justify-center items-center gap-2.5 rounded-[10px] w-[69px] h-[32px] text-sm font-bold text-darkblue">
-          <img
-            src="../public/assets/shared/icon-arrow-up.svg"
-            alt="icon arrow up"
-          />
+          <img src="/assets/shared/icon-arrow-up.svg" alt="icon arrow up" />
           {productRequest.upvotes}
         </div>
         <div className="flex items-center gap-1 text-sm font-bold text-darkblue">
-          <img
-            src="../public/assets/shared/icon-comments.svg"
-            alt="icon comments"
-          />
+          <img src="/assets/shared/icon-comments.svg" alt="icon comments" />
           {productRequest.comments?.length > 0
             ? productRequest.comments.length +
               productRequest.comments?.reduce(

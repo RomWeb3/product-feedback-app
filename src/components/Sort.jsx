@@ -16,7 +16,7 @@ function Sort({ onClick, sortBy, setSortBy }) {
             src="/assets/suggestions/icon-suggestions.svg"
             alt="icon suggestions"
           />
-          <span className="text-lg font-bold ml-4 mr-9">6 Suggestions</span>
+          <span className="text-lg font-bold ml-4 mr-9"> Suggestions</span>
         </div>
         <div
           className="flex justify-center items-center gap-2"
@@ -25,7 +25,7 @@ function Sort({ onClick, sortBy, setSortBy }) {
           <span className="text-sm">Sort by : </span>
           <span className="text-sm font-medium">{sortBy}</span>
           <img
-            src="../public/assets/shared/arrow-down-white.png"
+            src="/assets/shared/arrow-down-white.png"
             alt="icon arrow down"
             className={`${
               showSortBy ? "rotate-180 " : ""
@@ -50,7 +50,7 @@ function Sort({ onClick, sortBy, setSortBy }) {
               Most Upvotes
             </p>
             <img
-              src="../public/assets/shared/icon-check.svg"
+              src="/assets/shared/icon-check.svg"
               alt="icon check"
               className={`${
                 sortBy === "Most Upvotes" ? "block" : "hidden"
@@ -66,7 +66,7 @@ function Sort({ onClick, sortBy, setSortBy }) {
               Least Upvotes
             </p>
             <img
-              src="../public/assets/shared/icon-check.svg"
+              src="/assets/shared/icon-check.svg"
               alt="icon check"
               className={`${
                 sortBy === "Least Upvotes" ? "block" : "hidden"
@@ -82,7 +82,7 @@ function Sort({ onClick, sortBy, setSortBy }) {
               Most Comments
             </p>
             <img
-              src="../public/assets/shared/icon-check.svg"
+              src="/assets/shared/icon-check.svg"
               alt="icon check"
               className={`${
                 sortBy === "Most Comments" ? "block" : "hidden"
@@ -98,7 +98,7 @@ function Sort({ onClick, sortBy, setSortBy }) {
               Least Comments
             </p>
             <img
-              src="../public/assets/shared/icon-check.svg"
+              src="/assets/shared/icon-check.svg"
               alt="icon check"
               className={`${
                 sortBy === "Least Comments" ? "block" : "hidden"

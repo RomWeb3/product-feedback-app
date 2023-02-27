@@ -75,7 +75,7 @@ function CardRequest({ productRequest, datas, setDatas, screenWidth }) {
         <h2 className="font-bold transition-all text-sm md:text-lg">
           {productRequest.title}
         </h2>
-        <p className="mt-2 mb-[10px] md:mb-3 text-gray text-sm md:text-base">
+        <p className="mt-1 mb-[10px] md:mb-3 text-gray text-sm md:text-base">
           {productRequest.description}
         </p>
         <div className="mb-4 md:mb-0 bg-lightgray w-[111px] h-[30px] flex justify-center items-center rounded-[10px] text-blue font-semibold text-sm">

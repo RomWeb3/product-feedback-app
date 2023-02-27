@@ -33,7 +33,7 @@ function Header({ showMenu, setShowMenu, screenWidth }) {
       </div>
     </div>
   ) : (
-    <div className="w-[33%] min-w-[223px] h-[178px] relative">
+    <div className="w-[33%] xl:w-[255px] min-w-[223px] h-[178px] xl:h-[137px] relative">
       <div
         className="w-full h-full px-6 py-6 flex justify-between items-end text-white rounded-[10px]"
         style={{

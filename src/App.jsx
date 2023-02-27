@@ -28,7 +28,13 @@ function App() {
       <Routes>
         <Route
           path="/product-feedback-app/"
-          element={<Dashboard datas={datas} onNavigate={onNavigate} />}
+          element={
+            <Dashboard
+              datas={datas}
+              setDatas={setDatas}
+              onNavigate={onNavigate}
+            />
+          }
         />
         <Route
           path="/product-feedback-app/feedback/:feedbackId"

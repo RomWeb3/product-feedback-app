@@ -5,7 +5,7 @@ import SuggestionsEmpty from "../components/SuggestionsEmpty";
 import Menu from "../components/Menu";
 import { useEffect, useState } from "react";
 
-function Dashboard({ datas = [], onNavigate }) {
+function Dashboard({ datas = [], setDatas, onNavigate }) {
   const [showMenu, setShowMenu] = useState(false);
   const [category, setCategory] = useState("all");
   const [sortBy, setSortBy] = useState("Most Upvotes");
@@ -82,8 +82,8 @@ function Dashboard({ datas = [], onNavigate }) {
   }
 
   return (
-    <div className="App relative md:py-[56px] md:px-10 md:bg-verylightgray md:flex md:flex-col md:items-center">
-      <div className="md:flex md:gap-[10px] md:w-full md:max-w-[825px]">
+    <div className="App relative md:py-[56px] xl:py-[90px] min-h-screen md:px-10 bg-verylightgray md:flex md:flex-col md:items-center xl:items-start xl:flex-row xl:justify-center xl:gap-[30px]">
+      <div className="md:flex xl:flex-col md:gap-[10px] xl:gap-6 md:w-full xl:w-[255px] md:max-w-[825px]">
         <Header
           showMenu={showMenu}
           setShowMenu={setShowMenu}
@@ -98,30 +98,38 @@ function Dashboard({ datas = [], onNavigate }) {
           screenWidth={screenWidth}
         />
       </div>
-      <Sort
-        onClick={onNavigate}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-        count={suggestionCount}
-      />
 
-      <main className="bg-verylightgray w-full min-h-screen py-8 px-6 md:px-0 flex flex-col items-center gap-4">
-        {suggestionCount > 0 ? (
-          sortedRequests
-            .filter((productRequest) => productRequest.status === "suggestion")
-            .filter(
-              (productRequest) =>
-                category === "all" || productRequest.category === category
-            )
-            .map((productRequest) => (
-              <CardRequest
-                productRequest={productRequest}
-                key={productRequest.id}
-              />
-            ))
-        ) : (
-          <SuggestionsEmpty onClick={onNavigate} />
-        )}
+      <main className="w-full max-w-[825px] flex flex-col items-center">
+        <Sort
+          onClick={onNavigate}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          count={suggestionCount}
+        />
+
+        <div className="bg-verylightgray w-full py-8 px-6 md:px-0 flex flex-col items-center gap-4">
+          {suggestionCount > 0 ? (
+            sortedRequests
+              .filter(
+                (productRequest) => productRequest.status === "suggestion"
+              )
+              .filter(
+                (productRequest) =>
+                  category === "all" || productRequest.category === category
+              )
+              .map((productRequest) => (
+                <CardRequest
+                  productRequest={productRequest}
+                  datas={datas}
+                  setDatas={setDatas}
+                  key={productRequest.id}
+                  screenWidth={screenWidth}
+                />
+              ))
+          ) : (
+            <SuggestionsEmpty onClick={onNavigate} />
+          )}
+        </div>
       </main>
     </div>
   );

@@ -157,14 +157,14 @@ function Menu({
       )}
     </div>
   ) : (
-    <div className="w-[66%]">
-      <div className="bg-verylightgray flex gap-[10px]">
-        <div className="w-[100%] h-[178px] bg-white rounded-[10px] px-6 py-6 flex flex-wrap gap-2 items-center">
+    <div className="w-[66%] xl:w-full">
+      <div className="bg-verylightgray flex xl:flex-col gap-[10px] xl:gap-6">
+        <div className="w-[100%] xl:max-w-[255px] h-[178px] bg-white rounded-[10px] px-6 py-6 flex flex-wrap gap-2 items-center">
           <button
             className={`${
               category === "all"
                 ? "bg-blue text-white"
-                : "bg-lightgray text-blue"
+                : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
             onClick={() => {
               setCategory("all");
@@ -177,7 +177,7 @@ function Menu({
             className={`${
               category === "ui"
                 ? "bg-blue text-white"
-                : "bg-lightgray text-blue"
+                : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
             onClick={() => {
               setCategory("ui");
@@ -190,7 +190,7 @@ function Menu({
             className={`${
               category === "ux"
                 ? "bg-blue text-white"
-                : "bg-lightgray text-blue"
+                : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
             onClick={() => {
               setCategory("ux");
@@ -203,7 +203,7 @@ function Menu({
             className={`${
               category === "enhancement"
                 ? "bg-blue text-white"
-                : "bg-lightgray text-blue"
+                : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
             onClick={() => {
               setCategory("enhancement");
@@ -216,7 +216,7 @@ function Menu({
             className={`${
               category === "bug"
                 ? "bg-blue text-white"
-                : "bg-lightgray text-blue"
+                : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
             onClick={() => {
               setCategory("bug");
@@ -229,7 +229,7 @@ function Menu({
             className={`${
               category === "feature"
                 ? "bg-blue text-white"
-                : "bg-lightgray text-blue"
+                : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
             onClick={() => {
               setCategory("feature");
@@ -239,11 +239,11 @@ function Menu({
             Feature
           </button>
         </div>
-        <div className="w-[100%] h-[178px] bg-white rounded-[10px] px-6 flex flex-col justify-center">
+        <div className="w-[100%] xl:max-w-[255px] h-[178px] bg-white rounded-[10px] px-6 flex flex-col justify-center">
           <div className="flex justify-between items-center mb-6">
             <h4 className="font-bold text-lg text-darkblue">Roadmap</h4>
             <button
-              className="font-semibold text-sm text-blue underline"
+              className="font-semibold text-sm text-blue hover:text-[#8397F8] underline"
               onClick={() => navigate("/product-feedback-app/roadmap")}
             >
               View

@@ -29,5 +29,5 @@ button {
 
 body {
   font-family: "Jost", sans-serif;
-  transition: all 800ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }

@@ -10,6 +10,7 @@ function Menu({
   screenWidth,
 }) {
   const navigate = useNavigate();
+  const sortedRequests = datas.productRequests || [];
 
   const closeMenu = (e) => {
     if (e.target === e.currentTarget) {
@@ -17,7 +18,7 @@ function Menu({
     }
   };
 
-  const statusCounts = datas.productRequests?.reduce((counts, request) => {
+  const statusCounts = sortedRequests.reduce((counts, request) => {
     counts[request.status] = (counts[request.status] || 0) + 1;
     return counts;
   }, {});

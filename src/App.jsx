@@ -16,12 +16,12 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("../data/data.json")
+    fetch("../src/data/data.json")
       .then((response) => response.json())
       .then((data) => setDatas(data));
   }, []);
 
-  // console.log(datas.productRequests);
+  console.log(datas.productRequests);
 
   return (
     <div className="App">

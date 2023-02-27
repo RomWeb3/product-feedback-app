@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function CardRequest({ productRequest, datas, setDatas, screenWidth }) {
+function CardRequest({ productRequest, datas, setDatas }) {
   const navigate = useNavigate();
   const [voted, setVoted] = useState(false);
 

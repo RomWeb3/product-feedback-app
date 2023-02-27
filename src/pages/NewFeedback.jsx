@@ -52,7 +52,7 @@ function NewFeedback({ datas = [] }) {
             alt="icon new feedback"
           />
         </div>
-        <h2 className="font-bold text-lg text-darkblue tracking-tighter mb-6 mt-5">
+        <h2 className="font-bold text-lg md:text-2xl text-darkblue tracking-tighter mb-6 md:mb-10 mt-5">
           Create New Feedback
         </h2>
         <h3 className="font-bold text-sm text-darkblue mb-[3px]">

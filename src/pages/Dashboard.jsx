@@ -123,7 +123,6 @@ function Dashboard({ datas = [], setDatas, onNavigate }) {
                   datas={datas}
                   setDatas={setDatas}
                   key={productRequest.id}
-                  screenWidth={screenWidth}
                 />
               ))
           ) : (

@@ -49,19 +49,19 @@ function CardRequest({ productRequest, datas, setDatas }) {
       }}
     >
       {productRequest.status === "planned" && (
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-center gap-4 mb-4 md:ml-[112px]">
           <div className="w-2 h-2 bg-orange rounded-full"></div>
           <p className="text-gray text-sm">Planned</p>
         </div>
       )}
       {productRequest.status === "in-progress" && (
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-center gap-4 mb-4 md:ml-[112px]">
           <div className="w-2 h-2 bg-violet rounded-full"></div>
           <p className="text-gray text-sm">In Progress</p>
         </div>
       )}
       {productRequest.status === "live" && (
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-center gap-4 mb-4 md:ml-[112px]">
           <div className="w-2 h-2 bg-lightblue rounded-full"></div>
           <p className="text-gray text-sm">live</p>
         </div>

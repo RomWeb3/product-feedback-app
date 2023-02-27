@@ -29,14 +29,17 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
   //   setDatas({ ...datas, productRequest: updatedProductRequests });
   // };
 
-  const cardRequestClass = classNames("w-full max-w-[825px] bg-white", {
-    // Include the responsive classes if withoutMediaQueries is not true
-    "md:px-0 md:py-[28px] md:relative": !withoutMediaQueries,
-    // Override the responsive classes if withoutMediaQueries is true
-    "px-6 py-6": withoutMediaQueries,
-  });
+  const cardRequestClass = classNames(
+    "w-full max-w-[825px] bg-white px-6 py-6",
+    {
+      // Include the responsive classes if withoutMediaQueries is not true
+      "md:px-0 md:py-[28px] md:relative": !withoutMediaQueries,
+      // Override the responsive classes if withoutMediaQueries is true
+      "px-6 py-6": withoutMediaQueries,
+    }
+  );
 
-  const descriptionClass = classNames("mt-1  text-gray", {
+  const descriptionClass = classNames("mt-1  text-gray mb-[10px] text-sm", {
     "md:mb-3 md:text-base": !withoutMediaQueries,
     "mb-[10px] text-sm": withoutMediaQueries,
   });
@@ -59,13 +62,13 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
     "": withoutMediaQueries,
   });
 
-  const footerClass = classNames("flex justify-between items-center", {
+  const footerClass = classNames("flex justify-between items-center mt-4", {
     "md:mt-0": !withoutMediaQueries,
     "mt-4": withoutMediaQueries,
   });
 
   const buttonClass = classNames(
-    "flex bg-lightgray hover:bg-[#CFD7FF] cursor-pointer transition-all justify-center items-center rounded-[10px] text-sm font-bold text-darkblue",
+    "flex gap-2.5 w-[69px] h-[32px] bg-lightgray hover:bg-[#CFD7FF] cursor-pointer transition-all justify-center items-center rounded-[10px] text-sm font-bold text-darkblue",
     {
       "md:flex-col md:gap-2 md:absolute md:top-[28px] md:left-[32px] md:w-10 md:h-[53px]":
         !withoutMediaQueries,
@@ -74,7 +77,7 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
   );
 
   const commentsClass = classNames(
-    "flex items-center text-sm font-bold text-darkblue ",
+    "flex gap-1 items-center text-sm font-bold text-darkblue",
     {
       "md:absolute md:right-[32px] md:top-0 md:bottom-0 md:m-auto md:gap-2":
         !withoutMediaQueries,

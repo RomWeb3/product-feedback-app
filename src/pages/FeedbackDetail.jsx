@@ -168,7 +168,7 @@ function FeedbackDetail({ datas, setDatas }) {
   };
 
   return (
-    <div className="w-full min-h-screen p-6 bg-verylightgray flex flex-col items-center md:py-[56px]">
+    <div className="w-full min-h-screen p-6 md:px-10 bg-verylightgray flex flex-col items-center md:py-[56px]">
       <div className="w-full max-w-[730px]">
         <div className="flex justify-between mb-6">
           <div

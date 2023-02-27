@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import classNames from "classnames";
 
-function CardRequest({ productRequest, datas, setDatas }) {
+function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
   const navigate = useNavigate();
   const [voted, setVoted] = useState(false);
 
@@ -28,9 +29,62 @@ function CardRequest({ productRequest, datas, setDatas }) {
   //   setDatas({ ...datas, productRequest: updatedProductRequests });
   // };
 
+  const cardRequestClass = classNames("w-full max-w-[825px] bg-white", {
+    // Include the responsive classes if withoutMediaQueries is not true
+    "md:px-0 md:py-[28px] md:relative": !withoutMediaQueries,
+    // Override the responsive classes if withoutMediaQueries is true
+    "px-6 py-6": withoutMediaQueries,
+  });
+
+  const descriptionClass = classNames("mt-1  text-gray", {
+    "md:mb-3 md:text-base": !withoutMediaQueries,
+    "mb-[10px] text-sm": withoutMediaQueries,
+  });
+
+  const statusClass = classNames("flex items-center gap-4 mb-4 ", {
+    "md:ml-[112px]": !withoutMediaQueries,
+    "": withoutMediaQueries,
+  });
+
+  const cardClass = classNames(
+    "cursor-pointer text-darkblue hover:text-[#4661E6]",
+    {
+      "md:ml-[112px]": !withoutMediaQueries,
+      "": withoutMediaQueries,
+    }
+  );
+
+  const titleClass = classNames("font-bold transition-all text-sm", {
+    "md:text-lg": !withoutMediaQueries,
+    "": withoutMediaQueries,
+  });
+
+  const footerClass = classNames("flex justify-between items-center", {
+    "md:mt-0": !withoutMediaQueries,
+    "mt-4": withoutMediaQueries,
+  });
+
+  const buttonClass = classNames(
+    "flex bg-lightgray hover:bg-[#CFD7FF] cursor-pointer transition-all justify-center items-center rounded-[10px] text-sm font-bold text-darkblue",
+    {
+      "md:flex-col md:gap-2 md:absolute md:top-[28px] md:left-[32px] md:w-10 md:h-[53px]":
+        !withoutMediaQueries,
+      "flex gap-2.5 w-[69px] h-[32px]": withoutMediaQueries,
+    }
+  );
+
+  const commentsClass = classNames(
+    "flex items-center text-sm font-bold text-darkblue ",
+    {
+      "md:absolute md:right-[32px] md:top-0 md:bottom-0 md:m-auto md:gap-2":
+        !withoutMediaQueries,
+      "flex gap-1": withoutMediaQueries,
+    }
+  );
+
   return (
     <div
-      className="w-full max-w-[825px] bg-white px-6 md:px-0 py-6 md:py-[28px] md:relative"
+      className={cardRequestClass}
       style={{
         borderTop:
           productRequest.status === "planned"
@@ -49,43 +103,39 @@ function CardRequest({ productRequest, datas, setDatas }) {
       }}
     >
       {productRequest.status === "planned" && (
-        <div className="flex items-center gap-4 mb-4 md:ml-[112px]">
+        <div className={statusClass}>
           <div className="w-2 h-2 bg-orange rounded-full"></div>
           <p className="text-gray text-sm">Planned</p>
         </div>
       )}
       {productRequest.status === "in-progress" && (
-        <div className="flex items-center gap-4 mb-4 md:ml-[112px]">
+        <div className={statusClass}>
           <div className="w-2 h-2 bg-violet rounded-full"></div>
           <p className="text-gray text-sm">In Progress</p>
         </div>
       )}
       {productRequest.status === "live" && (
-        <div className="flex items-center gap-4 mb-4 md:ml-[112px]">
+        <div className={statusClass}>
           <div className="w-2 h-2 bg-lightblue rounded-full"></div>
           <p className="text-gray text-sm">live</p>
         </div>
       )}
       <div
-        className="cursor-pointer text-darkblue hover:text-[#4661E6] md:ml-[112px]"
+        className={cardClass}
         onClick={() =>
           navigate(`/product-feedback-app/feedback/${productRequest.id}`)
         }
       >
-        <h2 className="font-bold transition-all text-sm md:text-lg">
-          {productRequest.title}
-        </h2>
-        <p className="mt-1 mb-[10px] md:mb-3 text-gray text-sm md:text-base">
-          {productRequest.description}
-        </p>
-        <div className="mb-4 md:mb-0 bg-lightgray w-[111px] h-[30px] flex justify-center items-center rounded-[10px] text-blue font-semibold text-sm">
+        <h2 className={titleClass}>{productRequest.title}</h2>
+        <p className={descriptionClass}>{productRequest.description}</p>
+        <div className="bg-lightgray w-[111px] h-[30px] flex justify-center items-center rounded-[10px] text-blue font-semibold text-sm">
           {productRequest.category.charAt(0).toUpperCase() +
             productRequest.category.slice(1)}
         </div>
       </div>
-      <div className="flex justify-between items-center">
+      <div className={footerClass}>
         <button
-          className="md:absolute md:top-[28px] md:left-[32px] bg-lightgray hover:bg-[#CFD7FF] w-[69px] md:w-10 h-[32px] md:h-[53px] cursor-pointer transition-all flex md:flex-col justify-center items-center gap-2.5 md:gap-2 rounded-[10px] text-sm font-bold text-darkblue"
+          className={buttonClass}
           style={{ background: voted && "#4661E6", color: voted && "#fff" }}
           onClick={() => {
             onVote();
@@ -102,7 +152,7 @@ function CardRequest({ productRequest, datas, setDatas }) {
           />
           {productRequest.upvotes}
         </button>
-        <div className="md:absolute md:right-[32px] md:top-0 md:bottom-0 md:m-auto flex items-center gap-1 md:gap-2 text-sm font-bold text-darkblue">
+        <div className={commentsClass}>
           <img src="/assets/shared/icon-comments.svg" alt="icon comments" />
           {productRequest.comments?.length > 0
             ? productRequest.comments.length +

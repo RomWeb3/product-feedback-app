@@ -166,6 +166,7 @@ function Roadmap({ datas, onClick }) {
                   <CardRequest
                     productRequest={productRequest}
                     key={productRequest.id}
+                    withoutMediaQueries={true}
                   />
                 ))}
           </div>
@@ -188,6 +189,7 @@ function Roadmap({ datas, onClick }) {
                   <CardRequest
                     productRequest={productRequest}
                     key={productRequest.id}
+                    withoutMediaQueries={true}
                   />
                 ))}
           </div>
@@ -208,6 +210,7 @@ function Roadmap({ datas, onClick }) {
                   <CardRequest
                     productRequest={productRequest}
                     key={productRequest.id}
+                    withoutMediaQueries={true}
                   />
                 ))}
           </div>

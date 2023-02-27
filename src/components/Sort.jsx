@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Sort({ onClick, sortBy, setSortBy }) {
+function Sort({ onClick, sortBy, setSortBy, count }) {
   const [showSortBy, setShowSortBy] = useState(false);
 
   const handleClick = (e) => {
@@ -16,7 +16,9 @@ function Sort({ onClick, sortBy, setSortBy }) {
             src="/assets/suggestions/icon-suggestions.svg"
             alt="icon suggestions"
           />
-          <span className="text-lg font-bold ml-4 mr-9"> Suggestions</span>
+          <span className="text-lg font-bold ml-4 mr-9">
+            {count} Suggestions
+          </span>
         </div>
         <div
           className="flex justify-center items-center gap-2"

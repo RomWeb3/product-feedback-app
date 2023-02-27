@@ -11,6 +11,15 @@ function Dashboard({ datas = [], onNavigate }) {
   const [sortBy, setSortBy] = useState("Most Upvotes");
   const sortedRequests = datas.productRequests || [];
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const suggestionCount =
+    category === "all"
+      ? sortedRequests.filter(
+          (productRequest) => productRequest.status === "suggestion"
+        ).length
+      : sortedRequests
+          .filter((productRequest) => productRequest.status === "suggestion")
+          .filter((productRequest) => productRequest.category === category)
+          .length;
 
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
@@ -89,42 +98,30 @@ function Dashboard({ datas = [], onNavigate }) {
           screenWidth={screenWidth}
         />
       </div>
-      <Sort onClick={onNavigate} sortBy={sortBy} setSortBy={setSortBy} />
+      <Sort
+        onClick={onNavigate}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        count={suggestionCount}
+      />
 
       <main className="bg-verylightgray w-full min-h-screen py-8 px-6 md:px-0 flex flex-col items-center gap-4">
-        {datas != [] > 0 &&
-          (sortedRequests.filter(
-            (productRequest) => productRequest.status === "suggestion"
-          ).length > 0 ? (
-            category === "all" ? (
-              sortedRequests
-                .filter(
-                  (productRequest) => productRequest.status === "suggestion"
-                )
-                .map((productRequest) => (
-                  <CardRequest
-                    productRequest={productRequest}
-                    key={productRequest.id}
-                  />
-                ))
-            ) : (
-              sortedRequests
-                .filter(
-                  (productRequest) => productRequest.status === "suggestion"
-                )
-                .filter(
-                  (productRequest) => productRequest.category === category
-                )
-                .map((productRequest) => (
-                  <CardRequest
-                    productRequest={productRequest}
-                    key={productRequest.id}
-                  />
-                ))
+        {suggestionCount > 0 ? (
+          sortedRequests
+            .filter((productRequest) => productRequest.status === "suggestion")
+            .filter(
+              (productRequest) =>
+                category === "all" || productRequest.category === category
             )
-          ) : (
-            <SuggestionsEmpty />
-          ))}
+            .map((productRequest) => (
+              <CardRequest
+                productRequest={productRequest}
+                key={productRequest.id}
+              />
+            ))
+        ) : (
+          <SuggestionsEmpty onClick={onNavigate} />
+        )}
       </main>
     </div>
   );

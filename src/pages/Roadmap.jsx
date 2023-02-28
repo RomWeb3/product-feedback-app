@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CardRequest from "../components/CardRequest";
 
-function Roadmap({ datas, onClick }) {
+function Roadmap({ datas, setDatas, onClick }) {
   const navigate = useNavigate();
   const [status, setStatus] = useState("in-progress");
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -113,6 +113,8 @@ function Roadmap({ datas, onClick }) {
                     <CardRequest
                       productRequest={productRequest}
                       key={productRequest.id}
+                      datas={datas}
+                      setDatas={setDatas}
                     />
                   ))}
             </div>
@@ -167,6 +169,8 @@ function Roadmap({ datas, onClick }) {
                     productRequest={productRequest}
                     key={productRequest.id}
                     withoutMediaQueries={true}
+                    datas={datas}
+                    setDatas={setDatas}
                   />
                 ))}
           </div>
@@ -192,6 +196,8 @@ function Roadmap({ datas, onClick }) {
                     productRequest={productRequest}
                     key={productRequest.id}
                     withoutMediaQueries={true}
+                    datas={datas}
+                    setDatas={setDatas}
                   />
                 ))}
           </div>
@@ -215,6 +221,8 @@ function Roadmap({ datas, onClick }) {
                     productRequest={productRequest}
                     key={productRequest.id}
                     withoutMediaQueries={true}
+                    datas={datas}
+                    setDatas={setDatas}
                   />
                 ))}
           </div>

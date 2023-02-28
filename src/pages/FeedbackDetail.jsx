@@ -198,6 +198,8 @@ function FeedbackDetail({ datas, setDatas }) {
             <CardRequest
               productRequest={productRequest}
               key={productRequest.id}
+              datas={datas}
+              setDatas={setDatas}
             />
           ))}
 

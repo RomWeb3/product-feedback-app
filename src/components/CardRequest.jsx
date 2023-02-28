@@ -1,33 +1,24 @@
-import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
 function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
   const navigate = useNavigate();
-  const [voted, setVoted] = useState(false);
 
-  const onVote = () => {
+  const onVote = (productRequestId) => {
     const updatedProductRequests = [...datas.productRequests];
     const index = updatedProductRequests.findIndex(
-      (productRequest) => productRequest.id === productRequest.id
+      (productRequest) => productRequestId === productRequest.id
     );
     const updatedProductRequest = {
       ...updatedProductRequests[index],
-      upvotes: voted ? productRequest.upvotes - 1 : productRequest.upvotes + 1,
+      upvotes: productRequest.voted
+        ? productRequest.upvotes - 1
+        : productRequest.upvotes + 1,
+      voted: !productRequest.voted,
     };
     updatedProductRequests[index] = updatedProductRequest;
     setDatas({ ...datas, productRequests: updatedProductRequests });
-    setVoted(!voted);
   };
-
-  // const onVote = () => {
-  //   const updatedProductRequests = [...productRequest];
-
-  //   updatedProductRequests.upvotes = voted
-  //     ? productRequest.upvotes - 1
-  //     : productRequest.upvotes + 1;
-  //   setDatas({ ...datas, productRequest: updatedProductRequests });
-  // };
 
   const cardRequestClass = classNames(
     "w-full max-w-[825px] bg-white px-6 py-6",
@@ -139,15 +130,17 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
       <div className={footerClass}>
         <button
           className={buttonClass}
-          style={{ background: voted && "#4661E6", color: voted && "#fff" }}
+          style={{
+            background: productRequest.voted && "#4661E6",
+            color: productRequest.voted && "#fff",
+          }}
           onClick={() => {
-            onVote();
-            voted === false ? setVoted(true) : setVoted(false);
+            onVote(productRequest.id);
           }}
         >
           <img
             src={
-              voted
+              productRequest.voted
                 ? "/assets/shared/icon-arrow-up-white.svg"
                 : "/assets/shared/icon-arrow-up.svg"
             }

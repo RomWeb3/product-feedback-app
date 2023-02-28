@@ -10,6 +10,7 @@
       "title": "Add tags for solutions",
       "category": "enhancement",
       "upvotes": 112,
+      "voted": false,
       "status": "suggestion",
       "description": "Easier to search for solutions based on a specific stack.",
       "comments": [
@@ -40,6 +41,7 @@
       "title": "Add a dark theme option",
       "category": "feature",
       "upvotes": 99,
+      "voted": false,
       "status": "suggestion",
       "description": "It would help people with light sensitivities and who prefer dark mode.",
       "comments": [
@@ -91,6 +93,7 @@
       "title": "Q&A within the challenge hubs",
       "category": "feature",
       "upvotes": 65,
+      "voted": false,
       "status": "suggestion",
       "description": "Challenge-specific Q&A would make for easy reference.",
       "comments": [
@@ -111,6 +114,7 @@
       "title": "Add image/video upload to feedback",
       "category": "enhancement",
       "upvotes": 51,
+      "voted": false,
       "status": "suggestion",
       "description": "Images and screencasts can enhance comments on solutions.",
       "comments": [
@@ -141,6 +145,7 @@
       "title": "Ability to follow others",
       "category": "feature",
       "upvotes": 42,
+      "voted": false,
       "status": "suggestion",
       "description": "Stay updated on comments and solutions other people post.",
       "comments": [
@@ -181,6 +186,7 @@
       "title": "Preview images not loading",
       "category": "bug",
       "upvotes": 3,
+      "voted": false,
       "status": "suggestion",
       "description": "Challenge preview images are missing when you apply a filter."
     },
@@ -189,6 +195,7 @@
       "title": "More comprehensive reports",
       "category": "feature",
       "upvotes": 123,
+      "voted": false,
       "status": "planned",
       "description": "It would be great to see a more detailed breakdown of solutions.",
       "comments": [
@@ -219,6 +226,7 @@
       "title": "Learning paths",
       "category": "feature",
       "upvotes": 28,
+      "voted": false,
       "status": "planned",
       "description": "Sequenced projects for different goals to help people improve.",
       "comments": [
@@ -239,6 +247,7 @@
       "title": "One-click portfolio generation",
       "category": "feature",
       "upvotes": 62,
+      "voted": false,
       "status": "in-progress",
       "description": "Add ability to create professional looking portfolio from profile.",
       "comments": [
@@ -259,6 +268,7 @@
       "title": "Bookmark challenges",
       "category": "feature",
       "upvotes": 31,
+      "voted": false,
       "status": "in-progress",
       "description": "Be able to bookmark challenges to take later on.",
       "comments": [
@@ -279,6 +289,7 @@
       "title": "Animated solution screenshots",
       "category": "bug",
       "upvotes": 9,
+      "voted": false,
       "status": "in-progress",
       "description": "Screenshots of solutions with animations don’t display content."
     },
@@ -287,6 +298,7 @@
       "title": "Add micro-interactions",
       "category": "enhancement",
       "upvotes": 71,
+      "voted": false,
       "status": "live",
       "description": "Small animations at specific points can add delight.",
       "comments": [

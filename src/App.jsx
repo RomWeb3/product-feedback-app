@@ -50,7 +50,9 @@ function App() {
         />
         <Route
           path="/product-feedback-app/roadmap"
-          element={<Roadmap datas={datas} onClick={onNavigate} />}
+          element={
+            <Roadmap datas={datas} setDatas={setDatas} onClick={onNavigate} />
+          }
         />
         <Route
           path="*"

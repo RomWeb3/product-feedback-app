@@ -120,7 +120,7 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
       {productRequest.status === "live" && (
         <div className={statusClass}>
           <div className="w-2 h-2 bg-lightblue rounded-full"></div>
-          <p className="text-gray text-sm xl:text-base">live</p>
+          <p className="text-gray text-sm xl:text-base">Live</p>
         </div>
       )}
       <div

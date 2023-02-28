@@ -79,10 +79,8 @@ function FeedbackDetail({ datas, setDatas }) {
   const handleReplyClick = (commentId) => {
     const replyIndex = reply.findIndex((r) => r.commentId === commentId);
     if (replyIndex === -1) {
-      // if reply state doesn't exist for this comment, create it
       setReply([...reply, { commentId, value: true }]);
     } else {
-      // if reply state already exists for this comment, toggle its value
       setReply([
         ...reply.slice(0, replyIndex),
         { commentId, value: !reply[replyIndex].value },
@@ -247,7 +245,7 @@ function FeedbackDetail({ datas, setDatas }) {
                       </button>
                     ) : (
                       <button
-                        className="font-semibold text-sm text-red"
+                        className="font-semibold text-sm text-red hover:underline transition-all"
                         onClick={() => handleDeleteComment(comment.id)}
                       >
                         Delete
@@ -307,7 +305,7 @@ function FeedbackDetail({ datas, setDatas }) {
                             </button>
                           ) : (
                             <button
-                              className="font-semibold text-sm text-red"
+                              className="font-semibold text-sm text-red hover:underline transition-all"
                               onClick={() =>
                                 handleDeleteReply(comment.id, reply.id)
                               }

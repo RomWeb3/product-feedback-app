@@ -26,11 +26,11 @@ function Roadmap({ datas, onClick }) {
         <div className="w-full h-[100px] bg-verydarkblue px-6 flex justify-between items-center">
           <div className="flex flex-col gap-[3px] justify-center items-center">
             <div
-              className="flex items-center gap-4 cursor-pointer"
+              className="flex items-center gap-3 cursor-pointer"
               onClick={() => navigate(`/product-feedback-app/`)}
             >
               <img
-                src="/assets/shared/icon-arrow-left.svg"
+                src="/assets/shared/icon-arrow-left-white.svg"
                 alt="icon arrow left"
               />
               <p className="text-sm font-bold text-white">Go Back</p>
@@ -121,27 +121,27 @@ function Roadmap({ datas, onClick }) {
       </>
     ) : null
   ) : datas != [] > 0 ? (
-    <div className="px-10 bg-verylightgray min-h-screen py-[56px] flex flex-col items-center">
-      <div className="w-full max-w-[1110px] h-[100px] bg-verydarkblue px-6 flex justify-between items-center rounded-[10px]">
-        <div className="flex flex-col gap-[3px] justify-center items-center">
+    <div className="px-10 bg-verylightgray min-h-screen py-[56px] xl:pt-[78px] flex flex-col items-center">
+      <div className="w-full max-w-[1110px] h-[100px] md:h-[113px] bg-verydarkblue px-6 md:px-8 flex justify-between items-center rounded-[10px]">
+        <div className="flex flex-col gap-[3px] justify-center">
           <div
             className="flex items-center gap-4 cursor-pointer"
             onClick={() => navigate(`/product-feedback-app/`)}
           >
             <img
-              src="/assets/shared/icon-arrow-left.svg"
+              src="/assets/shared/icon-arrow-left-white.svg"
               alt="icon arrow left"
             />
             <p className="text-sm font-bold text-white hover:underline transition-all">
               Go Back
             </p>
           </div>
-          <h1 className="text-lg font-bold text-white tracking-tighter">
+          <h1 className="text-lg md:text-2xl font-bold text-white tracking-tighter">
             Roadmap
           </h1>
         </div>
         <button
-          className="bg-violet hover:bg-[#C75AF6] transition-all px-4 py-2.5 rounded-[10px] text-sm cursor-pointer font-bold text-white"
+          className="bg-violet hover:bg-[#C75AF6] transition-all px-4 md:px-6 py-2.5 md:py-3 rounded-[10px] text-sm cursor-pointer font-bold text-white"
           onClick={onClick}
         >
           + Add Feedback
@@ -149,10 +149,10 @@ function Roadmap({ datas, onClick }) {
       </div>
       <div className="w-full max-w-[1110px] pt-8 grid grid-cols-3 gap-[10px] lg:gap-[20px] xl:gap-[30px]">
         <div>
-          <h3 className="font-bold text-lg text-darkblue mb-[4px]">
+          <h3 className="font-bold text-base xl:text-lg text-darkblue mb-[4px]">
             Planned ({statusCounts["planned"] || 0})
           </h3>
-          <p className="text-sm text-gray mb-4">
+          <p className="text-sm xl:text-base text-gray mb-4">
             Ideas prioritized for research
           </p>
           <div className="w-full flex flex-col gap-4">
@@ -172,10 +172,12 @@ function Roadmap({ datas, onClick }) {
           </div>
         </div>
         <div>
-          <h3 className="font-bold text-lg text-darkblue mb-[4px]">
+          <h3 className="font-bold text-base xl:text-lg text-darkblue mb-[4px]">
             In-Progress ({statusCounts["in-progress"] || 0})
           </h3>
-          <p className="text-sm text-gray mb-4">Currently being developed</p>
+          <p className="text-sm xl:text-base text-gray mb-4">
+            Currently being developed
+          </p>
           <div className="w-full flex flex-col gap-4">
             {datas != [] > 0 &&
               datas.productRequests.filter(
@@ -195,10 +197,12 @@ function Roadmap({ datas, onClick }) {
           </div>
         </div>
         <div>
-          <h3 className="font-bold text-lg text-darkblue mb-[4px]">
+          <h3 className="font-bold text-base xl:text-lg text-darkblue mb-[4px]">
             Live ({statusCounts["live"] || 0})
           </h3>
-          <p className="text-sm text-gray mb-4">Released features</p>
+          <p className="text-sm xl:text-base text-gray mb-4">
+            Released features
+          </p>
           <div className="w-full flex flex-col gap-4">
             {datas != [] > 0 &&
               datas.productRequests.filter(

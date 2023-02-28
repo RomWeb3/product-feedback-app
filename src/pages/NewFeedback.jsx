@@ -81,7 +81,7 @@ function NewFeedback({ datas = [] }) {
             alt="icon arrow down"
             className={`${
               showCategory ? "rotate-180 " : ""
-            } transition-all duration-300`}
+            } transition-all duration-200`}
           />
 
           {showCategory && (
@@ -171,13 +171,13 @@ function NewFeedback({ datas = [] }) {
           onChange={(e) => setDescription(e.target.value)}
         />
         <button
-          className="w-full max-w-[458px] h-[40px] bg-violet rounded-[10px] text-lightgray text-sm font-bold mb-4"
+          className="w-full max-w-[458px] h-[40px] bg-violet hover:bg-[#C75AF6] rounded-[10px] text-lightgray text-sm font-bold mb-4"
           onClick={handleNewFeedback}
         >
           Add Feedback
         </button>
         <button
-          className="w-full max-w-[458px] h-[40px] bg-darkblue rounded-[10px] text-lightgray text-sm font-bold"
+          className="w-full max-w-[458px] h-[40px] bg-darkblue hover:bg-[#656EA3] rounded-[10px] text-lightgray text-sm font-bold"
           onClick={() => navigate(`/product-feedback-app/`)}
         >
           Cancel

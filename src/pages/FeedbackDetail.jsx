@@ -168,7 +168,7 @@ function FeedbackDetail({ datas, setDatas }) {
   };
 
   return (
-    <div className="w-full min-h-screen p-6 md:px-10 bg-verylightgray flex flex-col items-center md:py-[56px]">
+    <div className="w-full min-h-screen p-6 md:px-10 bg-verylightgray flex flex-col items-center md:py-[56px] xl:py-[80px]">
       <div className="w-full max-w-[730px]">
         <div className="flex justify-between mb-6">
           <div
@@ -184,7 +184,7 @@ function FeedbackDetail({ datas, setDatas }) {
             </p>
           </div>
           <button
-            className="px-4 py-[10.5px] bg-blue hover:bg-[#7C91F9] transition-all rounded-[10px] text-lightgray text-sm font-bold"
+            className="px-4 md:px-6 py-[10.5px] md:py-3 bg-blue hover:bg-[#7C91F9] transition-all rounded-[10px] text-lightgray text-sm font-bold"
             onClick={() =>
               navigate(`/product-feedback-app/edit-feedback/${feedbackId}`)
             }
@@ -361,7 +361,7 @@ function FeedbackDetail({ datas, setDatas }) {
               {charactersLeft} Characters left
             </p>
             <button
-              className="text-sm font-bold text-lightgray bg-violet hover:bg-[#C75AF6] transition-all rounded-[10px] px-4 py-[10.35px]"
+              className="text-sm font-bold text-lightgray bg-violet hover:bg-[#C75AF6] transition-all rounded-[10px] px-4 md:px-6 py-[10.35px] md:py-3"
               onClick={handleNewComment}
             >
               Post Comment

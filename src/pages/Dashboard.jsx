@@ -107,7 +107,7 @@ function Dashboard({ datas = [], setDatas, onNavigate }) {
           count={suggestionCount}
         />
 
-        <div className="bg-verylightgray w-full py-8 px-6 md:px-0 flex flex-col items-center gap-4">
+        <div className="bg-verylightgray w-full py-8 md:py-6 px-6 md:px-0 flex flex-col items-center gap-4">
           {suggestionCount > 0 ? (
             sortedRequests
               .filter(

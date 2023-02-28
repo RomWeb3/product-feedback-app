@@ -35,13 +35,13 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
       // Include the responsive classes if withoutMediaQueries is not true
       "md:px-0 md:py-[28px] md:relative": !withoutMediaQueries,
       // Override the responsive classes if withoutMediaQueries is true
-      "px-8 py-6": withoutMediaQueries,
+      "px-5 xl:px-8 py-6": withoutMediaQueries,
     }
   );
 
   const descriptionClass = classNames("mt-1 text-gray mb-[10px] text-sm", {
     "md:mb-3 md:text-base": !withoutMediaQueries,
-    "mb-[16px] text-[16px]": withoutMediaQueries,
+    "xl:mb-[16px] text-[13px] xl:text-[16px]": withoutMediaQueries,
   });
 
   const statusClass = classNames("flex items-center gap-4 mb-4", {
@@ -59,7 +59,7 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
 
   const titleClass = classNames("font-bold transition-all text-sm", {
     "md:text-lg": !withoutMediaQueries,
-    "text-[18px]": withoutMediaQueries,
+    "text-[13px] xl:text-[18px]": withoutMediaQueries,
   });
 
   const footerClass = classNames("flex justify-between items-center mt-4", {
@@ -72,7 +72,7 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
     {
       "md:flex-col md:gap-2 md:absolute md:top-[28px] md:left-[32px] md:w-10 md:h-[53px]":
         !withoutMediaQueries,
-      "flex gap-2.5 w-[69px] h-[40px]": withoutMediaQueries,
+      "flex gap-2.5 w-[69px] h-[32px] xl:h-[40px]": withoutMediaQueries,
     }
   );
 
@@ -81,7 +81,7 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
     {
       "md:absolute md:right-[32px] md:top-0 md:bottom-0 md:m-auto md:gap-2":
         !withoutMediaQueries,
-      "flex gap-2 text-[16px]": withoutMediaQueries,
+      "flex gap-1 xl:gap-2 text-sm xl:text-[16px]": withoutMediaQueries,
     }
   );
 
@@ -108,19 +108,19 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
       {productRequest.status === "planned" && (
         <div className={statusClass}>
           <div className="w-2 h-2 bg-orange rounded-full"></div>
-          <p className="text-gray text-sm">Planned</p>
+          <p className="text-gray text-sm xl:text-base">Planned</p>
         </div>
       )}
       {productRequest.status === "in-progress" && (
         <div className={statusClass}>
           <div className="w-2 h-2 bg-violet rounded-full"></div>
-          <p className="text-gray text-sm">In Progress</p>
+          <p className="text-gray text-sm xl:text-base">In Progress</p>
         </div>
       )}
       {productRequest.status === "live" && (
         <div className={statusClass}>
           <div className="w-2 h-2 bg-lightblue rounded-full"></div>
-          <p className="text-gray text-sm">live</p>
+          <p className="text-gray text-sm xl:text-base">live</p>
         </div>
       )}
       <div

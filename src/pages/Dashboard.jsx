@@ -33,7 +33,6 @@ function Dashboard({ datas = [], setDatas, onNavigate }) {
     case "Most Upvotes":
       sortedRequests.sort((a, b) => b.upvotes - a.upvotes);
       break;
-
     case "Least Upvotes":
       sortedRequests.sort((a, b) => a.upvotes - b.upvotes);
       break;
@@ -56,7 +55,6 @@ function Dashboard({ datas = [], setDatas, onNavigate }) {
             : 0)
       );
       break;
-
     case "Least Comments":
       sortedRequests.sort(
         (a, b) =>
@@ -76,7 +74,6 @@ function Dashboard({ datas = [], setDatas, onNavigate }) {
             : 0)
       );
       break;
-
     default:
       break;
   }

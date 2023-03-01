@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardRequest from "../components/CardRequest";
 
@@ -14,15 +14,6 @@ function FeedbackDetail({ datas, setDatas }) {
   const { feedbackId } = useParams();
   const productRequests = datas.productRequests;
   const currentUser = datas.currentUser;
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const filteredRequest = productRequests?.filter(
     (productRequest) => productRequest.id === feedbackId * 1

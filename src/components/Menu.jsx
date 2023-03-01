@@ -23,6 +23,11 @@ function Menu({
     return counts;
   }, {});
 
+  const handleCategory = (e) => {
+    setCategory(e.target.innerText.toLowerCase());
+    setShowMenu(false);
+  };
+
   return screenWidth < 768 ? (
     <div>
       {showMenu && (
@@ -39,10 +44,7 @@ function Menu({
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => {
-                  setCategory("all");
-                  setShowMenu(false);
-                }}
+                onClick={(e) => handleCategory(e)}
               >
                 All
               </button>
@@ -52,10 +54,7 @@ function Menu({
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => {
-                  setCategory("ui");
-                  setShowMenu(false);
-                }}
+                onClick={(e) => handleCategory(e)}
               >
                 UI
               </button>
@@ -65,10 +64,7 @@ function Menu({
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => {
-                  setCategory("ux");
-                  setShowMenu(false);
-                }}
+                onClick={(e) => handleCategory(e)}
               >
                 UX
               </button>
@@ -78,10 +74,7 @@ function Menu({
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => {
-                  setCategory("enhancement");
-                  setShowMenu(false);
-                }}
+                onClick={(e) => handleCategory(e)}
               >
                 Enhancement
               </button>
@@ -91,10 +84,7 @@ function Menu({
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => {
-                  setCategory("bug");
-                  setShowMenu(false);
-                }}
+                onClick={(e) => handleCategory(e)}
               >
                 Bug
               </button>
@@ -104,10 +94,7 @@ function Menu({
                     ? "bg-blue text-white"
                     : "bg-lightgray text-blue"
                 } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-                onClick={() => {
-                  setCategory("feature");
-                  setShowMenu(false);
-                }}
+                onClick={(e) => handleCategory(e)}
               >
                 Feature
               </button>
@@ -166,10 +153,7 @@ function Menu({
                 ? "bg-blue text-white"
                 : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-            onClick={() => {
-              setCategory("all");
-              setShowMenu(false);
-            }}
+            onClick={(e) => handleCategory(e)}
           >
             All
           </button>
@@ -179,10 +163,7 @@ function Menu({
                 ? "bg-blue text-white"
                 : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-            onClick={() => {
-              setCategory("ui");
-              setShowMenu(false);
-            }}
+            onClick={(e) => handleCategory(e)}
           >
             UI
           </button>
@@ -192,10 +173,7 @@ function Menu({
                 ? "bg-blue text-white"
                 : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-            onClick={() => {
-              setCategory("ux");
-              setShowMenu(false);
-            }}
+            onClick={(e) => handleCategory(e)}
           >
             UX
           </button>
@@ -205,10 +183,7 @@ function Menu({
                 ? "bg-blue text-white"
                 : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-            onClick={() => {
-              setCategory("enhancement");
-              setShowMenu(false);
-            }}
+            onClick={(e) => handleCategory(e)}
           >
             Enhancement
           </button>
@@ -218,10 +193,7 @@ function Menu({
                 ? "bg-blue text-white"
                 : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-            onClick={() => {
-              setCategory("bug");
-              setShowMenu(false);
-            }}
+            onClick={(e) => handleCategory(e)}
           >
             Bug
           </button>
@@ -231,10 +203,7 @@ function Menu({
                 ? "bg-blue text-white"
                 : "bg-lightgray text-blue hover:bg-[#CFD7FF]"
             } px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all`}
-            onClick={() => {
-              setCategory("feature");
-              setShowMenu(false);
-            }}
+            onClick={(e) => handleCategory(e)}
           >
             Feature
           </button>

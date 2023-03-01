@@ -123,8 +123,10 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
         <h2 className={titleClass}>{productRequest.title}</h2>
         <p className={descriptionClass}>{productRequest.description}</p>
         <div className="bg-lightgray w-[111px] h-[30px] flex justify-center items-center rounded-[10px] text-blue font-semibold text-sm">
-          {productRequest.category.charAt(0).toUpperCase() +
-            productRequest.category.slice(1)}
+          {productRequest.category === "ui" || productRequest.category === "ux"
+            ? productRequest.category.toUpperCase()
+            : productRequest.category.charAt(0).toUpperCase() +
+              productRequest.category.slice(1)}
         </div>
       </div>
       <div className={footerClass}>

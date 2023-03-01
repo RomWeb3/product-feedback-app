@@ -9,7 +9,7 @@ function NewFeedback({ datas = [] }) {
   const [description, setDescription] = useState("");
 
   const handleClick = (e) => {
-    setCategory(e.target.innerText);
+    setCategory(e.target.innerText.toLowerCase());
     setShowCategory(false);
   };
 
@@ -27,7 +27,7 @@ function NewFeedback({ datas = [] }) {
       title.length < 2 ||
       title.length > 30 ||
       description.length < 2 ||
-      description.length > 500
+      description.length > 250
     ) {
       alert("Fields empty or too long");
     } else {
@@ -63,7 +63,8 @@ function NewFeedback({ datas = [] }) {
         </p>
         <input
           type="text"
-          className="w-full max-w-[458px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6"
+          className="w-full max-w-[458px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6 placeholder:opacity-60"
+          placeholder="Max character count is 30"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -75,7 +76,11 @@ function NewFeedback({ datas = [] }) {
           className="relative w-full max-w-[458px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6 cursor-pointer flex justify-between items-center"
           onClick={() => setShowCategory(!showCategory)}
         >
-          <p className="text-base text-darkblue">{category}</p>
+          <p className="text-base text-darkblue">
+            {category === "ui" || category === "ux"
+              ? category.toUpperCase()
+              : category.charAt(0).toUpperCase() + category.slice(1)}
+          </p>
           <img
             src="/assets/shared/icon-arrow-down.svg"
             alt="icon arrow down"
@@ -166,7 +171,8 @@ function NewFeedback({ datas = [] }) {
         </p>
         <textarea
           type="text"
-          className="w-full max-w-[458px] h-[120px] bg-verylightgray rounded-[5px] p-4 mb-10 resize-none"
+          className="w-full max-w-[458px] h-[120px] bg-verylightgray rounded-[5px] p-4 mb-10 resize-none placeholder:opacity-60"
+          placeholder="Max character count is 250"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />

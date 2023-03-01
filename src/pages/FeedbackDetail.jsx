@@ -268,7 +268,7 @@ function FeedbackDetail({ datas, setDatas }) {
         <div className="flex justify-between mb-6">
           <div
             className="flex items-center gap-4 cursor-pointer"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate(`/product-feedback-app/`)}
           >
             <img
               src="/assets/shared/icon-arrow-left.svg"

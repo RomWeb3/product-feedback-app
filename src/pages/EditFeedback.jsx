@@ -21,20 +21,6 @@ function EditFeedback({ datas, setDatas }) {
     setShowStatus(false);
   };
 
-  const handleEditFeedback = () => {
-    const newFeedback = {
-      title: title,
-      category: category,
-      status: status,
-      description: description,
-    };
-
-    setDatas({
-      ...datas,
-      productRequests: [...datas.productRequests, newFeedback],
-    });
-  };
-
   const currentFeedback = datas.productRequests?.find(
     (feedback) => feedback.id === feedbackId * 1
   );
@@ -49,6 +35,33 @@ function EditFeedback({ datas, setDatas }) {
   useEffect(() => {
     setFeedback();
   }, [currentFeedback]);
+
+  const handleEditFeedback = () => {
+    const feedbackIndex = datas.productRequests.findIndex(
+      (feedback) => feedback.id === feedbackId * 1
+    );
+
+    const updatedFeedback = {
+      ...currentFeedback,
+      title,
+      category,
+      status,
+      description,
+    };
+
+    const updatedProductRequests = [
+      ...datas.productRequests.slice(0, feedbackIndex),
+      updatedFeedback,
+      ...datas.productRequests.slice(feedbackIndex + 1),
+    ];
+
+    setDatas({
+      ...datas,
+      productRequests: updatedProductRequests,
+    });
+
+    navigate(`/product-feedback-app/feedback/${feedbackId}`);
+  };
 
   return (
     <div className="min-h-screen p-6 bg-verylightgray flex flex-col justify-center items-center gap-8 sm:gap-10">
@@ -270,7 +283,10 @@ function EditFeedback({ datas, setDatas }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button className="w-full h-[40px] bg-violet hover:bg-[#C75AF6] transition-all rounded-[10px] text-lightgray text-sm font-bold mb-4">
+        <button
+          className="w-full h-[40px] bg-violet hover:bg-[#C75AF6] transition-all rounded-[10px] text-lightgray text-sm font-bold mb-4"
+          onClick={handleEditFeedback}
+        >
           Save Changes
         </button>
         <button

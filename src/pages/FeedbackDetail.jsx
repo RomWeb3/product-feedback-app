@@ -5,7 +5,9 @@ import CardRequest from "../components/CardRequest";
 function FeedbackDetail({ datas, setDatas }) {
   const [newComment, setNewComment] = useState("");
   const [reply, setReply] = useState([]);
+  const [replyReply, setReplyReply] = useState([]);
   const [newReply, setNewReply] = useState("");
+  const [newReplyReply, setNewReplyReply] = useState("");
   const maxCharacters = 250;
   const charactersLeft = maxCharacters - newComment.length;
   const navigate = useNavigate();
@@ -112,7 +114,6 @@ function FeedbackDetail({ datas, setDatas }) {
                 replies: [
                   ...comment.replies,
                   {
-                    id: Math.random().toString(36).substring(7),
                     content: newReply,
                     replyingTo: comment.user.username,
                     user: {
@@ -149,8 +150,113 @@ function FeedbackDetail({ datas, setDatas }) {
               return {
                 ...comment,
                 replies: comment.replies.filter(
-                  (reply) => reply.id !== replyId
+                  (reply, index) => index !== replyId
                 ),
+              };
+            }
+            return comment;
+          }),
+        };
+      }
+      return productRequest;
+    });
+    setDatas({
+      ...datas,
+      productRequests: updatedProductRequests,
+    });
+  };
+
+  const handleReplyReplyClick = (commentId, replyId) => {
+    const replyIndex = replyReply.findIndex(
+      (r) => r.commentId === commentId && r.replyId === replyId
+    );
+    if (replyIndex === -1) {
+      setReplyReply([...replyReply, { commentId, replyId, value: true }]);
+    } else {
+      setReplyReply([
+        ...replyReply.slice(0, replyIndex),
+        {
+          commentId,
+          replyId,
+          value: !replyReply[replyIndex].value,
+        },
+        ...replyReply.slice(replyIndex + 1),
+      ]);
+    }
+  };
+
+  const isReplyReplyVisible = (commentId, replyId) => {
+    const replyState = replyReply.find(
+      (r) => r.commentId === commentId && r.replyId === replyId
+    );
+    return replyState ? replyState.value : false;
+  };
+
+  const handleNewReplyReply = (commentId, replyId) => {
+    const updatedProductRequests = productRequests.map((productRequest) => {
+      if (productRequest.id === feedbackId * 1) {
+        return {
+          ...productRequest,
+          comments: productRequest.comments.map((comment) => {
+            if (comment.id === commentId) {
+              return {
+                ...comment,
+                replies: comment.replies.map((reply, index) => {
+                  if (index === replyId && reply.replies) {
+                    return {
+                      ...reply,
+                      replies: [
+                        ...reply.replies,
+                        {
+                          content: newReplyReply,
+                          replyingTo: reply.user.username,
+                          user: {
+                            image: currentUser.image,
+                            name: currentUser.name,
+                            username: currentUser.username,
+                          },
+                        },
+                      ],
+                    };
+                  }
+                  return reply;
+                }),
+              };
+            }
+            return comment;
+          }),
+        };
+      }
+      return productRequest;
+    });
+    setDatas({
+      ...datas,
+      productRequests: updatedProductRequests,
+    });
+    setNewReplyReply("");
+    handleReplyReplyClick(commentId, replyId);
+  };
+
+  const handleDeleteReplyReply = (commentId, replyId, replyReplyId) => {
+    const updatedProductRequests = productRequests.map((productRequest) => {
+      if (productRequest.id === feedbackId * 1) {
+        return {
+          ...productRequest,
+          comments: productRequest.comments.map((comment) => {
+            if (comment.id === commentId) {
+              return {
+                ...comment,
+                replies: comment.replies.map((reply, index) => {
+                  if (index === replyId) {
+                    return {
+                      ...reply,
+                      replies: reply.replies.filter(
+                        (replyReply, index) => index !== replyReplyId
+                      ),
+                    };
+                  }
+                  return reply;
+                }),
               };
             }
             return comment;
@@ -216,6 +322,7 @@ function FeedbackDetail({ datas, setDatas }) {
                   : "No Comments yet";
               })}
           </h5>
+
           {datas != [] > 0 &&
             filteredRequest.map((productRequest) =>
               productRequest.comments?.map((comment) => (
@@ -272,6 +379,7 @@ function FeedbackDetail({ datas, setDatas }) {
                       </button>
                     </div>
                   )}
+
                   {!comment.replies?.length > 0 ? (
                     <div className="w-full h-[1px] bg-separator opacity-25 my-2"></div>
                   ) : (
@@ -299,7 +407,9 @@ function FeedbackDetail({ datas, setDatas }) {
                           {reply.user.username !== currentUser.username ? (
                             <button
                               className="font-semibold text-sm text-blue hover:underline transition-all"
-                              onClick={() => handleReplyClick(comment.id)}
+                              onClick={() =>
+                                handleReplyReplyClick(comment.id, index)
+                              }
                             >
                               Reply
                             </button>
@@ -307,7 +417,7 @@ function FeedbackDetail({ datas, setDatas }) {
                             <button
                               className="font-semibold text-sm text-red hover:underline transition-all"
                               onClick={() =>
-                                handleDeleteReply(comment.id, reply.id)
+                                handleDeleteReply(comment.id, index)
                               }
                             >
                               Delete
@@ -320,23 +430,68 @@ function FeedbackDetail({ datas, setDatas }) {
                           </span>{" "}
                           {reply.content}
                         </div>
-                        {isReplyVisible(comment.id) && (
+                        {isReplyReplyVisible(comment.id, index) && (
                           <div className="flex flex-col md:flex-row md:gap-4 md:ml-[72px]">
                             <textarea
                               className="mb-4 bg-verylightgray w-full h-[80px] rounded-[5px] p-4 resize-none text-sm"
                               type="text"
                               placeholder="Type your reply here"
-                              value={newReply}
-                              onChange={(e) => setNewReply(e.target.value)}
+                              value={newReplyReply}
+                              onChange={(e) => setNewReplyReply(e.target.value)}
                             />
                             <button
                               className="max-w-[117px] w-full self-end md:self-start px-4 py-[10.5px] bg-violet hover:bg-[#C75AF6] transition-all rounded-[10px] text-lightgray text-sm font-bold"
-                              onClick={() => handleNewReply(comment.id)}
+                              onClick={() =>
+                                handleNewReplyReply(comment.id, index)
+                              }
                             >
                               Post Reply
                             </button>
                           </div>
                         )}
+
+                        {reply.replies?.map((reply, Replyindex) => (
+                          <div
+                            className="flex flex-col gap-4 mt-2 relative border-l-[1px] border-border pl-6 md:ml-[18px]"
+                            key={Replyindex}
+                          >
+                            <div className="flex justify-between items-center">
+                              <div className="flex items-center gap-4 md:gap-8">
+                                <img
+                                  className="rounded-full w-10 h-10"
+                                  src={reply.user.image.slice(1)}
+                                  alt="icon user"
+                                />
+                                <div>
+                                  <p className="text-sm font-bold text-darkblue">
+                                    {reply.user.name}
+                                  </p>
+                                  <p className="text-sm text-gray">
+                                    @{reply.user.username}
+                                  </p>
+                                </div>
+                              </div>
+                              <button
+                                className="font-semibold text-sm text-red hover:underline transition-all"
+                                onClick={() =>
+                                  handleDeleteReplyReply(
+                                    comment.id,
+                                    index,
+                                    Replyindex
+                                  )
+                                }
+                              >
+                                Delete
+                              </button>
+                            </div>
+                            <div className="text-sm text-gray md:ml-[72px]">
+                              <span className="text-violet font-semibold">
+                                @{reply.replyingTo}
+                              </span>{" "}
+                              {reply.content}
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     ))
                   )}

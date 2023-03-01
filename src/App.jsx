@@ -6,9 +6,10 @@ import FeedbackDetail from "./pages/FeedbackDetail";
 import NewFeedback from "./pages/NewFeedback";
 import EditFeedback from "./pages/EditFeedback";
 import Roadmap from "./pages/Roadmap";
+import useLocalStorage from "use-local-storage";
 
 function App() {
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useLocalStorage("datas", []);
   const navigate = useNavigate();
 
   const onNavigate = () => {
@@ -16,9 +17,17 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("../src/data/data.json")
-      .then((response) => response.json())
-      .then((data) => setDatas(data));
+    const localData = localStorage.getItem("datas");
+    if (localData) {
+      setDatas(JSON.parse(localData));
+    } else {
+      fetch("../src/data/data.json")
+        .then((response) => response.json())
+        .then((data) => {
+          setDatas(data);
+          localStorage.setItem("datas", JSON.stringify(data));
+        });
+    }
   }, []);
 
   console.log(datas.productRequests);

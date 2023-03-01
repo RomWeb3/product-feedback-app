@@ -46,7 +46,7 @@ function App() {
         />
         <Route
           path="/product-feedback-app/edit-feedback/:feedbackId"
-          element={<EditFeedback datas={datas} />}
+          element={<EditFeedback datas={datas} setDatas={setDatas} />}
         />
         <Route
           path="/product-feedback-app/roadmap"

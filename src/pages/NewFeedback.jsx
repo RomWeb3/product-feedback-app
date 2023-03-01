@@ -5,7 +5,7 @@ function NewFeedback({ datas = [] }) {
   const navigate = useNavigate();
   const [showCategory, setShowCategory] = useState(false);
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("Feature");
+  const [category, setCategory] = useState("feature");
   const [description, setDescription] = useState("");
 
   const handleClick = (e) => {
@@ -43,7 +43,9 @@ function NewFeedback({ datas = [] }) {
         onClick={() => navigate(`/product-feedback-app/`)}
       >
         <img src="/assets/shared/icon-arrow-left.svg" alt="icon arrow left" />
-        <p className="text-sm font-bold text-gray">Go Back</p>
+        <p className="text-sm font-bold text-gray hover:underline transition-all">
+          Go Back
+        </p>
       </div>
       <div className="mt-[35px] w-full max-w-[540px] bg-white rounded-[10px] p-6 sm:p-[42px] relative">
         <div className="w-10 h-10 rounded-full absolute left-6 top-[-20px]">
@@ -90,7 +92,7 @@ function NewFeedback({ datas = [] }) {
           />
 
           {showCategory && (
-            <div className="absolute top-16 left-0 w-full rounded-[5px] bg-white shadow-lg">
+            <div className="absolute z-50 top-16 left-0 w-full rounded-[5px] bg-white shadow-lg">
               <div
                 className="flex items-center justify-between text-gray hover:text-violet"
                 onClick={(e) => handleClick(e)}
@@ -100,11 +102,11 @@ function NewFeedback({ datas = [] }) {
                   src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
-                    category === "Feature" ? "block" : "hidden"
+                    category === "feature" ? "block" : "hidden"
                   } transition-all duration-300 px-6`}
                 />
               </div>
-              <div className="w-full h-[1px] bg-separator"></div>
+              <div className="w-full h-[1px] bg-[#3A4374] opacity-[15%]"></div>
               <div
                 className="flex items-center justify-between text-gray hover:text-violet"
                 onClick={(e) => handleClick(e)}
@@ -114,11 +116,11 @@ function NewFeedback({ datas = [] }) {
                   src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
-                    category === "UI" ? "block" : "hidden"
+                    category === "ui" ? "block" : "hidden"
                   } transition-all duration-300 px-6`}
                 />
               </div>
-              <div className="w-full h-[1px] bg-separator"></div>
+              <div className="w-full h-[1px] bg-[#3A4374] opacity-[15%]"></div>
               <div
                 className="flex items-center justify-between text-gray hover:text-violet"
                 onClick={(e) => handleClick(e)}
@@ -128,11 +130,11 @@ function NewFeedback({ datas = [] }) {
                   src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
-                    category === "UX" ? "block" : "hidden"
+                    category === "ux" ? "block" : "hidden"
                   } transition-all duration-300 px-6`}
                 />
               </div>
-              <div className="w-full h-[1px] bg-separator"></div>
+              <div className="w-full h-[1px] bg-[#3A4374] opacity-[15%]"></div>
               <div
                 className="flex items-center justify-between text-gray hover:text-violet"
                 onClick={(e) => handleClick(e)}
@@ -142,11 +144,11 @@ function NewFeedback({ datas = [] }) {
                   src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
-                    category === "Enhancement" ? "block" : "hidden"
+                    category === "enhancement" ? "block" : "hidden"
                   } transition-all duration-300 px-6`}
                 />
               </div>
-              <div className="w-full h-[1px] bg-separator"></div>
+              <div className="w-full h-[1px] bg-[#3A4374] opacity-[15%]"></div>
               <div
                 className="flex items-center justify-between text-gray hover:text-violet"
                 onClick={(e) => handleClick(e)}
@@ -156,7 +158,7 @@ function NewFeedback({ datas = [] }) {
                   src="/assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
-                    category === "Bug" ? "block" : "hidden"
+                    category === "bug" ? "block" : "hidden"
                   } transition-all duration-300 px-6`}
                 />
               </div>
@@ -177,13 +179,13 @@ function NewFeedback({ datas = [] }) {
           onChange={(e) => setDescription(e.target.value)}
         />
         <button
-          className="w-full max-w-[458px] h-[40px] bg-violet hover:bg-[#C75AF6] rounded-[10px] text-lightgray text-sm font-bold mb-4"
+          className="w-full max-w-[458px] h-[40px] bg-violet hover:bg-[#C75AF6] transition-all rounded-[10px] text-lightgray text-sm font-bold mb-4"
           onClick={handleNewFeedback}
         >
           Add Feedback
         </button>
         <button
-          className="w-full max-w-[458px] h-[40px] bg-darkblue hover:bg-[#656EA3] rounded-[10px] text-lightgray text-sm font-bold"
+          className="w-full max-w-[458px] h-[40px] bg-darkblue hover:bg-[#656EA3] transition-all rounded-[10px] text-lightgray text-sm font-bold"
           onClick={() => navigate(`/product-feedback-app/`)}
         >
           Cancel

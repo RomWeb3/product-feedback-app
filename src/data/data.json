@@ -165,7 +165,8 @@
                 "image": "./assets/user-images/image-zena.jpg",
                 "name": "Zena Kelley",
                 "username": "velvetround"
-              }
+              },
+              "replies": []
             }
           ]
         },
@@ -188,7 +189,8 @@
       "upvotes": 3,
       "voted": false,
       "status": "suggestion",
-      "description": "Challenge preview images are missing when you apply a filter."
+      "description": "Challenge preview images are missing when you apply a filter.",
+      "comments": []
     },
     {
       "id": 7,

@@ -21,7 +21,7 @@ function App() {
     if (localData && !Array.isArray(JSON.parse(localData))) {
       setDatas(JSON.parse(localData));
     } else {
-      fetch("../src/data/data.json")
+      fetch("./data/data.json")
         .then((response) => response.json())
         .then((data) => {
           setDatas(data);

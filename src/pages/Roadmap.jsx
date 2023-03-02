@@ -30,7 +30,7 @@ function Roadmap({ datas, setDatas, onClick }) {
               onClick={() => navigate(`/product-feedback-app/`)}
             >
               <img
-                src="/assets/shared/icon-arrow-left-white.svg"
+                src="./assets/shared/icon-arrow-left-white.svg"
                 alt="icon arrow left"
               />
               <p className="text-sm font-bold text-white">Go Back</p>
@@ -131,7 +131,7 @@ function Roadmap({ datas, setDatas, onClick }) {
             onClick={() => navigate(`/product-feedback-app/`)}
           >
             <img
-              src="/assets/shared/icon-arrow-left-white.svg"
+              src="./assets/shared/icon-arrow-left-white.svg"
               alt="icon arrow left"
             />
             <p className="text-sm font-bold text-white hover:underline transition-all">

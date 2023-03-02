@@ -143,15 +143,15 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
           <img
             src={
               productRequest.voted
-                ? "/assets/shared/icon-arrow-up-white.svg"
-                : "/assets/shared/icon-arrow-up.svg"
+                ? "./assets/shared/icon-arrow-up-white.svg"
+                : "./assets/shared/icon-arrow-up.svg"
             }
             alt="icon arrow up"
           />
           {productRequest.upvotes}
         </button>
         <div className={commentsClass}>
-          <img src="/assets/shared/icon-comments.svg" alt="icon comments" />
+          <img src="./assets/shared/icon-comments.svg" alt="icon comments" />
           {productRequest.comments?.length > 0
             ? productRequest.comments.length +
               productRequest.comments?.reduce(

@@ -271,7 +271,7 @@ function FeedbackDetail({ datas, setDatas }) {
             onClick={() => navigate(`/product-feedback-app/`)}
           >
             <img
-              src="/assets/shared/icon-arrow-left.svg"
+              src="./assets/shared/icon-arrow-left.svg"
               alt="icon arrow left"
             />
             <p className="text-sm font-bold text-gray hover:underline transition-all">

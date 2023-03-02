@@ -104,7 +104,7 @@ function EditFeedback({ datas, setDatas }) {
         className="w-full max-w-[540px] flex items-center gap-4 cursor-pointer"
         onClick={() => navigate(-1)}
       >
-        <img src="/assets/shared/icon-arrow-left.svg" alt="icon arrow left" />
+        <img src="./assets/shared/icon-arrow-left.svg" alt="icon arrow left" />
         <p className="text-sm font-bold text-gray hover:underline transition-all">
           Go Back
         </p>
@@ -113,7 +113,7 @@ function EditFeedback({ datas, setDatas }) {
       <div className="w-full max-w-[540px] mt-[35px] bg-white rounded-[10px] p-6 sm:p-[42px] relative">
         <div className="w-10 h-10 sm:scale-[1.4] rounded-full absolute left-6 sm:left-[50px] top-[-20px] sm:top-[-20px]">
           <img
-            src="/assets/shared/icon-edit-feedback.svg"
+            src="./assets/shared/icon-edit-feedback.svg"
             alt="icon new feedback"
           />
         </div>
@@ -164,7 +164,7 @@ function EditFeedback({ datas, setDatas }) {
               : category?.charAt(0).toUpperCase() + category?.slice(1)}
           </p>
           <img
-            src="/assets/shared/icon-arrow-down.svg"
+            src="./assets/shared/icon-arrow-down.svg"
             alt="icon arrow down"
             className={`${
               showCategory ? "rotate-180 " : ""
@@ -179,7 +179,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">Feature</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "feature" ? "block" : "hidden"
@@ -193,7 +193,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">UI</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "ui" ? "block" : "hidden"
@@ -207,7 +207,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">UX</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "ux" ? "block" : "hidden"
@@ -221,7 +221,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">Enhancement</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "enhancement" ? "block" : "hidden"
@@ -235,7 +235,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">Bug</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     category === "bug" ? "block" : "hidden"
@@ -257,7 +257,7 @@ function EditFeedback({ datas, setDatas }) {
             {status?.charAt(0).toUpperCase() + status?.slice(1)}
           </p>
           <img
-            src="/assets/shared/icon-arrow-down.svg"
+            src="./assets/shared/icon-arrow-down.svg"
             alt="icon arrow down"
             className={`${
               showStatus ? "rotate-180 " : ""
@@ -272,7 +272,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">Suggestion</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     status === "suggestion" ? "block" : "hidden"
@@ -286,7 +286,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">Planned</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     status === "planned" ? "block" : "hidden"
@@ -300,7 +300,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">In-Progress</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     status === "in-progress" ? "block" : "hidden"
@@ -314,7 +314,7 @@ function EditFeedback({ datas, setDatas }) {
               >
                 <p className="py-3 px-6">Live</p>
                 <img
-                  src="/assets/shared/icon-check.svg"
+                  src="./assets/shared/icon-check.svg"
                   alt="icon check"
                   className={`${
                     status === "live" ? "block" : "hidden"

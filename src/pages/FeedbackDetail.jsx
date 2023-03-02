@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardRequest from "../components/CardRequest";
 import iconArrowLeft from "/assets/shared/icon-arrow-left.svg";
+import imageElijah from "/assets/user-images/image-elijah.jpg";
 
 function FeedbackDetail({ datas, setDatas }) {
   const [newComment, setNewComment] = useState("");
@@ -320,7 +321,7 @@ function FeedbackDetail({ datas, setDatas }) {
                     <div className="flex items-center gap-4 md:gap-8">
                       <img
                         className="rounded-full w-10 h-10"
-                        src={comment.user.image.slice(1)}
+                        src={comment.user.image}
                         alt="icon user"
                       />
                       <div>
@@ -381,7 +382,7 @@ function FeedbackDetail({ datas, setDatas }) {
                           <div className="flex items-center gap-4 md:gap-8">
                             <img
                               className="rounded-full w-10 h-10"
-                              src={reply.user.image.slice(1)}
+                              src={reply.user.image}
                               alt="icon user"
                             />
                             <div>
@@ -448,7 +449,7 @@ function FeedbackDetail({ datas, setDatas }) {
                               <div className="flex items-center gap-4 md:gap-8">
                                 <img
                                   className="rounded-full w-10 h-10"
-                                  src={reply.user.image.slice(1)}
+                                  src={reply.user.image}
                                   alt="icon user"
                                 />
                                 <div>

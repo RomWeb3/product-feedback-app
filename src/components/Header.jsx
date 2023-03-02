@@ -9,7 +9,7 @@ function Header({ showMenu, setShowMenu, screenWidth }) {
         }}
       >
         <div>
-          <h1 className="font-bold text-base">Frontend Mentor</h1>
+          <h1 className="font-bold text-base">Feedback App</h1>
           <h2 className="font-medium text-sm opacity-75">Feedback Board</h2>
         </div>
         <div
@@ -42,7 +42,7 @@ function Header({ showMenu, setShowMenu, screenWidth }) {
         }}
       >
         <div>
-          <h1 className="font-bold text-xl">Frontend Mentor</h1>
+          <h1 className="font-bold text-xl">Feedback App</h1>
           <h2 className="font-medium text-base opacity-75">Feedback Board</h2>
         </div>
       </div>

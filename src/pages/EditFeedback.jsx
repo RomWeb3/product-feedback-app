@@ -10,6 +10,11 @@ function EditFeedback({ datas, setDatas }) {
   const [category, setCategory] = useState("");
   const [status, setStatus] = useState("");
   const [description, setDescription] = useState("");
+  const [titleError, setTitleError] = useState(false);
+  const [descriptionError, setDescriptionError] = useState(false);
+  const [saveClicked, setSaveClicked] = useState(false);
+  let titleErr = "Please enter a valid title (2-50 characters)";
+  let descriptionErr = "Please enter a valid description (20-250 characters)";
 
   const handleClick = (e) => {
     setCategory(e.target.innerText.toLowerCase());
@@ -20,6 +25,18 @@ function EditFeedback({ datas, setDatas }) {
     setStatus(e.target.innerText.toLowerCase());
     setShowStatus(false);
   };
+
+  useEffect(() => {
+    title.length < 2 || title.length > 50
+      ? setTitleError(true)
+      : setTitleError(false);
+  }, [title]);
+
+  useEffect(() => {
+    description.length < 20 || description.length > 250
+      ? setDescriptionError(true)
+      : setDescriptionError(false);
+  }, [description]);
 
   const currentFeedback = datas.productRequests?.find(
     (feedback) => feedback.id === feedbackId * 1
@@ -37,10 +54,13 @@ function EditFeedback({ datas, setDatas }) {
   }, [currentFeedback]);
 
   const handleEditFeedback = () => {
+    setSaveClicked(true);
+    if (titleError || descriptionError) {
+      return;
+    }
     const feedbackIndex = datas.productRequests.findIndex(
       (feedback) => feedback.id === feedbackId * 1
     );
-
     const updatedFeedback = {
       ...currentFeedback,
       title,
@@ -48,10 +68,25 @@ function EditFeedback({ datas, setDatas }) {
       status,
       description,
     };
-
     const updatedProductRequests = [
       ...datas.productRequests.slice(0, feedbackIndex),
       updatedFeedback,
+      ...datas.productRequests.slice(feedbackIndex + 1),
+    ];
+    setDatas({
+      ...datas,
+      productRequests: updatedProductRequests,
+    });
+    navigate(`/product-feedback-app/feedback/${feedbackId}`);
+  };
+
+  const handleDeleteFeedback = () => {
+    const feedbackIndex = datas.productRequests.findIndex(
+      (feedback) => feedback.id === feedbackId * 1
+    );
+
+    const updatedProductRequests = [
+      ...datas.productRequests.slice(0, feedbackIndex),
       ...datas.productRequests.slice(feedbackIndex + 1),
     ];
 
@@ -60,7 +95,7 @@ function EditFeedback({ datas, setDatas }) {
       productRequests: updatedProductRequests,
     });
 
-    navigate(`/product-feedback-app/feedback/${feedbackId}`);
+    navigate(`/product-feedback-app/`);
   };
 
   return (
@@ -75,15 +110,15 @@ function EditFeedback({ datas, setDatas }) {
         </p>
       </div>
 
-      <div className="w-full max-w-[540px] mt-[35px] bg-white rounded-[10px] p-6 relative">
-        <div className="w-10 h-10 rounded-full absolute left-6 top-[-20px]">
+      <div className="w-full max-w-[540px] mt-[35px] bg-white rounded-[10px] p-6 sm:p-[42px] relative">
+        <div className="w-10 h-10 sm:scale-[1.4] rounded-full absolute left-6 sm:left-[50px] top-[-20px] sm:top-[-20px]">
           <img
             src="/assets/shared/icon-edit-feedback.svg"
             alt="icon new feedback"
           />
         </div>
-        <h2 className="font-bold text-lg md:text-2xl text-darkblue tracking-tighter mb-6 md:mb-10 mt-5">
-          Editing '{title}'
+        <h2 className="font-bold text-lg sm:text-2xl text-darkblue tracking-tighter mb-6 sm:mb-10 mt-5">
+          Editing '{currentFeedback?.title}'
         </h2>
         <h3 className="font-bold text-sm text-darkblue mb-[3px]">
           Feedback Title
@@ -93,10 +128,28 @@ function EditFeedback({ datas, setDatas }) {
         </p>
         <input
           type="text"
-          className="w-full max-w-[456px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6"
+          className={`w-full max-w-[458px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6 placeholder:opacity-60 ${
+            titleError && saveClicked && "border border-red"
+          }`}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <div className="w-full mb-4 mt-[-20px] flex justify-between items-center">
+          <div>
+            {titleError && saveClicked && (
+              <p className="text-red font-medium text-sm">{titleErr}</p>
+            )}
+          </div>
+          <div>
+            <p
+              className={`flex text-sm text-gray w-full justify-end ${
+                title.length > 50 && "text-red"
+              }`}
+            >
+              {title.length}/50
+            </p>
+          </div>
+        </div>
         <h3 className="font-bold text-sm text-darkblue mb-[3px]">Category</h3>
         <p className="text-sm text-gray mb-4">
           Choose a category for your feedback
@@ -279,10 +332,30 @@ function EditFeedback({ datas, setDatas }) {
         </p>
         <textarea
           type="text"
-          className="w-full max-w-[456px] h-[120px] bg-verylightgray rounded-[5px] p-4 mb-10 resize-none"
+          className={`w-full max-w-[458px] h-[120px] bg-verylightgray rounded-[5px] p-4 mb-10 resize-none placeholder:opacity-60 ${
+            descriptionError && saveClicked && "border border-red"
+          }`}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+        <div className="w-full mb-10 mt-[-40px] flex justify-between items-center">
+          <div>
+            {descriptionError && saveClicked && (
+              <p className="w-full text-red font-medium text-sm">
+                {descriptionErr}
+              </p>
+            )}
+          </div>
+          <div>
+            <p
+              className={`w-full text-sm text-gray ${
+                description.length > 250 && "text-red"
+              }`}
+            >
+              {description.length}/250
+            </p>
+          </div>
+        </div>
         <button
           className="w-full h-[40px] bg-violet hover:bg-[#C75AF6] transition-all rounded-[10px] text-lightgray text-sm font-bold mb-4"
           onClick={handleEditFeedback}
@@ -295,7 +368,10 @@ function EditFeedback({ datas, setDatas }) {
         >
           Cancel
         </button>
-        <button className="w-full h-[40px] bg-red hover:opacity-80 rounded-[10px] text-lightgray text-sm font-bold">
+        <button
+          className="w-full h-[40px] bg-red hover:opacity-80 rounded-[10px] text-lightgray text-sm font-bold"
+          onClick={handleDeleteFeedback}
+        >
           Delete
         </button>
       </div>

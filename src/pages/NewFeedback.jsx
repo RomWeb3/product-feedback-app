@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function NewFeedback({ datas = [] }) {
@@ -7,30 +7,43 @@ function NewFeedback({ datas = [] }) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("feature");
   const [description, setDescription] = useState("");
+  const [titleError, setTitleError] = useState(false);
+  const [descriptionError, setDescriptionError] = useState(false);
+  const [saveClicked, setSaveClicked] = useState(false);
+  let titleErr = "Please enter a valid title (2-50 characters)";
+  let descriptionErr = "Please enter a valid description (20-250 characters)";
 
   const handleClick = (e) => {
     setCategory(e.target.innerText.toLowerCase());
     setShowCategory(false);
   };
 
+  useEffect(() => {
+    title.length < 2 || title.length > 50
+      ? setTitleError(true)
+      : setTitleError(false);
+  }, [title]);
+
+  useEffect(() => {
+    description.length < 20 || description.length > 250
+      ? setDescriptionError(true)
+      : setDescriptionError(false);
+  }, [description]);
+
   const handleNewFeedback = () => {
-    const newFeedback = {
-      id: datas.productRequests.length + 1,
-      title: title,
-      category: category,
-      description: description,
-      status: "suggestion",
-      upvotes: 0,
-      comments: [],
-    };
-    if (
-      title.length < 2 ||
-      title.length > 30 ||
-      description.length < 2 ||
-      description.length > 250
-    ) {
-      alert("Fields empty or too long");
+    setSaveClicked(true);
+    if (titleError || descriptionError) {
+      return;
     } else {
+      const newFeedback = {
+        id: datas.productRequests.length + 1,
+        title: title,
+        category: category,
+        description: description,
+        status: "suggestion",
+        upvotes: 0,
+        comments: [],
+      };
       datas.productRequests.push(newFeedback);
       navigate(`/product-feedback-app/feedback/${newFeedback.id}`);
     }
@@ -48,13 +61,13 @@ function NewFeedback({ datas = [] }) {
         </p>
       </div>
       <div className="mt-[35px] w-full max-w-[540px] bg-white rounded-[10px] p-6 sm:p-[42px] relative">
-        <div className="w-10 h-10 rounded-full absolute left-6 top-[-20px]">
+        <div className="w-10 h-10 sm:w-[56px] sm:h-[56px] rounded-full absolute left-6 sm:left-[42px] top-[-20px] sm:top-[-28px]">
           <img
             src="/assets/shared/icon-new-feedback.svg"
             alt="icon new feedback"
           />
         </div>
-        <h2 className="font-bold text-lg md:text-2xl text-darkblue tracking-tighter mb-6 md:mb-10 mt-5">
+        <h2 className="font-bold text-lg sm:text-2xl text-darkblue tracking-tighter mb-6 sm:mb-10">
           Create New Feedback
         </h2>
         <h3 className="font-bold text-sm text-darkblue mb-[3px]">
@@ -65,11 +78,28 @@ function NewFeedback({ datas = [] }) {
         </p>
         <input
           type="text"
-          className="w-full max-w-[458px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6 placeholder:opacity-60"
-          placeholder="Max character count is 30"
+          className={`w-full max-w-[458px] h-[48px] bg-verylightgray rounded-[5px] px-4 mb-6 placeholder:opacity-60 ${
+            titleError && saveClicked && "border border-red"
+          }`}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <div className="w-full mb-4 mt-[-20px] flex justify-between items-center">
+          <div>
+            {titleError && saveClicked && (
+              <p className="text-red font-medium text-sm">{titleErr}</p>
+            )}
+          </div>
+          <div>
+            <p
+              className={`flex text-sm text-gray w-full justify-end ${
+                title.length > 50 && "text-red"
+              }`}
+            >
+              {title.length}/50
+            </p>
+          </div>
+        </div>
         <h3 className="font-bold text-sm text-darkblue mb-[3px]">Category</h3>
         <p className="text-sm text-gray mb-4">
           Choose a category for your feedback
@@ -173,11 +203,30 @@ function NewFeedback({ datas = [] }) {
         </p>
         <textarea
           type="text"
-          className="w-full max-w-[458px] h-[120px] bg-verylightgray rounded-[5px] p-4 mb-10 resize-none placeholder:opacity-60"
-          placeholder="Max character count is 250"
+          className={`w-full max-w-[458px] h-[120px] bg-verylightgray rounded-[5px] p-4 mb-10 resize-none placeholder:opacity-60 ${
+            descriptionError && saveClicked && "border border-red"
+          }`}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+        <div className="w-full mb-10 mt-[-40px] flex justify-between items-center">
+          <div>
+            {descriptionError && saveClicked && (
+              <p className="w-full text-red font-medium text-sm">
+                {descriptionErr}
+              </p>
+            )}
+          </div>
+          <div>
+            <p
+              className={`w-full text-sm text-gray ${
+                description.length > 250 && "text-red"
+              }`}
+            >
+              {description.length}/250
+            </p>
+          </div>
+        </div>
         <button
           className="w-full max-w-[458px] h-[40px] bg-violet hover:bg-[#C75AF6] transition-all rounded-[10px] text-lightgray text-sm font-bold mb-4"
           onClick={handleNewFeedback}

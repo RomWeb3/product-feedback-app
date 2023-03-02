@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     const localData = localStorage.getItem("datas");
-    if (localData) {
+    if (localData && !Array.isArray(JSON.parse(localData))) {
       setDatas(JSON.parse(localData));
     } else {
       fetch("../src/data/data.json")

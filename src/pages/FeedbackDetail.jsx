@@ -321,7 +321,11 @@ function FeedbackDetail({ datas, setDatas }) {
                     <div className="flex items-center gap-4 md:gap-8">
                       <img
                         className="rounded-full w-10 h-10"
-                        src={comment.user.image}
+                        // src={comment.user.image}
+                        // src={require(`/assets/user-images/${item.avatar}`).default}
+                        src={import(
+                          `/assets/user-images/${comment.user.name.toLowerCase()}.jpg`
+                        )}
                         alt="icon user"
                       />
                       <div>

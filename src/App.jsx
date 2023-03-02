@@ -13,7 +13,7 @@ function App() {
   const navigate = useNavigate();
 
   const onNavigate = () => {
-    navigate("/product-feedback-app/new-feedback");
+    navigate("/new-feedback");
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route
-          path="/product-feedback-app/"
+          path="/"
           element={
             <Dashboard
               datas={datas}
@@ -46,19 +46,16 @@ function App() {
           }
         />
         <Route
-          path="/product-feedback-app/feedback/:feedbackId"
+          path="/feedback/:feedbackId"
           element={<FeedbackDetail datas={datas} setDatas={setDatas} />}
         />
+        <Route path="/new-feedback" element={<NewFeedback datas={datas} />} />
         <Route
-          path="/product-feedback-app/new-feedback"
-          element={<NewFeedback datas={datas} />}
-        />
-        <Route
-          path="/product-feedback-app/edit-feedback/:feedbackId"
+          path="/edit-feedback/:feedbackId"
           element={<EditFeedback datas={datas} setDatas={setDatas} />}
         />
         <Route
-          path="/product-feedback-app/roadmap"
+          path="/roadmap"
           element={
             <Roadmap datas={datas} setDatas={setDatas} onClick={onNavigate} />
           }

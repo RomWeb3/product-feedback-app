@@ -27,7 +27,7 @@ function Roadmap({ datas, setDatas, onClick }) {
           <div className="flex flex-col gap-[3px] justify-center items-center">
             <div
               className="flex items-center gap-3 cursor-pointer"
-              onClick={() => navigate(`/product-feedback-app/`)}
+              onClick={() => navigate(`/`)}
             >
               <img
                 src="./assets/shared/icon-arrow-left-white.svg"
@@ -128,7 +128,7 @@ function Roadmap({ datas, setDatas, onClick }) {
         <div className="flex flex-col gap-[3px] justify-center">
           <div
             className="flex items-center gap-4 cursor-pointer"
-            onClick={() => navigate(`/product-feedback-app/`)}
+            onClick={() => navigate(`/`)}
           >
             <img
               src="./assets/shared/icon-arrow-left-white.svg"

@@ -119,9 +119,7 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
       )}
       <div
         className={cardClass}
-        onClick={() =>
-          navigate(`/product-feedback-app/feedback/${productRequest.id}`)
-        }
+        onClick={() => navigate(`/feedback/${productRequest.id}`)}
       >
         <h2 className={titleClass}>{productRequest.title}</h2>
         <p className={descriptionClass}>{productRequest.description}</p>

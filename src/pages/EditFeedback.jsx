@@ -81,7 +81,7 @@ function EditFeedback({ datas, setDatas }) {
       ...datas,
       productRequests: updatedProductRequests,
     });
-    navigate(`/product-feedback-app/feedback/${feedbackId}`);
+    navigate(`/feedback/${feedbackId}`);
   };
 
   const handleDeleteFeedback = () => {
@@ -99,7 +99,7 @@ function EditFeedback({ datas, setDatas }) {
       productRequests: updatedProductRequests,
     });
 
-    navigate(`/product-feedback-app/`);
+    navigate(`/`);
   };
 
   return (

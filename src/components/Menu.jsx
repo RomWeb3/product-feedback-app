@@ -104,7 +104,7 @@ function Menu({
                 <h4 className="font-bold text-lg text-darkblue">Roadmap</h4>
                 <button
                   className="font-semibold text-sm text-blue underline"
-                  onClick={() => navigate("/product-feedback-app/roadmap")}
+                  onClick={() => navigate("/roadmap")}
                 >
                   View
                 </button>
@@ -213,7 +213,7 @@ function Menu({
             <h4 className="font-bold text-lg text-darkblue">Roadmap</h4>
             <button
               className="font-semibold text-sm text-blue hover:text-[#8397F8] underline"
-              onClick={() => navigate("/product-feedback-app/roadmap")}
+              onClick={() => navigate("/roadmap")}
             >
               View
             </button>

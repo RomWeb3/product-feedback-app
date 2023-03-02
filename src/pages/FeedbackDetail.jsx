@@ -270,7 +270,7 @@ function FeedbackDetail({ datas, setDatas }) {
         <div className="flex justify-between mb-6">
           <div
             className="flex items-center gap-4 cursor-pointer"
-            onClick={() => navigate(`/product-feedback-app/`)}
+            onClick={() => navigate(`/`)}
           >
             <img src={iconArrowLeft} alt="icon arrow left" />
             <p className="text-sm font-bold text-gray hover:underline transition-all">
@@ -279,9 +279,7 @@ function FeedbackDetail({ datas, setDatas }) {
           </div>
           <button
             className="px-4 md:px-6 py-[10.5px] md:py-3 bg-blue hover:bg-[#7C91F9] transition-all rounded-[10px] text-lightgray text-sm font-bold"
-            onClick={() =>
-              navigate(`/product-feedback-app/edit-feedback/${feedbackId}`)
-            }
+            onClick={() => navigate(`/edit-feedback/${feedbackId}`)}
           >
             Edit Feedback
           </button>

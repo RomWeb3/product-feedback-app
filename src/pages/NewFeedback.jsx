@@ -45,7 +45,7 @@ function NewFeedback({ datas = [] }) {
         comments: [],
       };
       datas.productRequests.push(newFeedback);
-      navigate(`/product-feedback-app/feedback/${newFeedback.id}`);
+      navigate(`/feedback/${newFeedback.id}`);
     }
   };
 
@@ -53,7 +53,7 @@ function NewFeedback({ datas = [] }) {
     <div className="w-full min-h-screen p-6 bg-verylightgray flex flex-col justify-center items-center gap-8 sm:gap-10">
       <div
         className="w-full max-w-[540px] flex items-center gap-4 cursor-pointer"
-        onClick={() => navigate(`/product-feedback-app/`)}
+        onClick={() => navigate(`/`)}
       >
         <img src="./assets/shared/icon-arrow-left.svg" alt="icon arrow left" />
         <p className="text-sm font-bold text-gray hover:underline transition-all">
@@ -235,7 +235,7 @@ function NewFeedback({ datas = [] }) {
         </button>
         <button
           className="w-full max-w-[458px] h-[40px] bg-darkblue hover:bg-[#656EA3] transition-all rounded-[10px] text-lightgray text-sm font-bold"
-          onClick={() => navigate(`/product-feedback-app/`)}
+          onClick={() => navigate(`/`)}
         >
           Cancel
         </button>

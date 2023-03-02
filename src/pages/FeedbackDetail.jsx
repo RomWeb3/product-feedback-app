@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardRequest from "../components/CardRequest";
+import iconArrowLeft from "/assets/shared/icon-arrow-left.svg";
 
 function FeedbackDetail({ datas, setDatas }) {
   const [newComment, setNewComment] = useState("");
@@ -270,10 +271,7 @@ function FeedbackDetail({ datas, setDatas }) {
             className="flex items-center gap-4 cursor-pointer"
             onClick={() => navigate(`/product-feedback-app/`)}
           >
-            <img
-              src="./assets/shared/icon-arrow-left.svg"
-              alt="icon arrow left"
-            />
+            <img src={iconArrowLeft} alt="icon arrow left" />
             <p className="text-sm font-bold text-gray hover:underline transition-all">
               Go Back
             </p>

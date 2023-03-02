@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import iconArrowUp from "/assets/shared/icon-arrow-up.svg";
+import iconArrowUpWhite from "/assets/shared/icon-arrow-up-white.svg";
+import iconComments from "/assets/shared/icon-comments.svg";
 
 function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
   const navigate = useNavigate();
@@ -141,17 +144,13 @@ function CardRequest({ productRequest, datas, setDatas, withoutMediaQueries }) {
           }}
         >
           <img
-            src={
-              productRequest.voted
-                ? "./assets/shared/icon-arrow-up-white.svg"
-                : "./assets/shared/icon-arrow-up.svg"
-            }
+            src={productRequest.voted ? iconArrowUpWhite : iconArrowUp}
             alt="icon arrow up"
           />
           {productRequest.upvotes}
         </button>
         <div className={commentsClass}>
-          <img src="./assets/shared/icon-comments.svg" alt="icon comments" />
+          <img src={iconComments} alt="icon comments" />
           {productRequest.comments?.length > 0
             ? productRequest.comments.length +
               productRequest.comments?.reduce(

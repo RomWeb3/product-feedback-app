@@ -30,13 +30,17 @@ function NewFeedback({ datas = [] }) {
       : setDescriptionError(false);
   }, [description]);
 
+  const highestFeedbackID = datas.productRequests.reduce((prev, current) =>
+    prev.id > current.id ? prev : current
+  );
+
   const handleNewFeedback = () => {
     setSaveClicked(true);
     if (titleError || descriptionError) {
       return;
     } else {
       const newFeedback = {
-        id: datas.productRequests.length + 1,
+        id: highestFeedbackID.id + 1,
         title: title,
         category: category,
         description: description,

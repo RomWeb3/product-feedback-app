@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Routes basename="/product-feedback-app">
+      <Routes>
         <Route
           path="/product-feedback-app/"
           element={

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardRequest from "../components/CardRequest";
 import iconArrowLeft from "/assets/shared/icon-arrow-left.svg";
-import imageElijah from "/assets/user-images/image-elijah.jpg";
 
 function FeedbackDetail({ datas, setDatas }) {
   const [newComment, setNewComment] = useState("");

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://romweb3.github.io/product-feedback-app/",
+  "homepage": "https://product-feedback-app-liard.vercel.app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

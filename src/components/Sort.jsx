@@ -10,7 +10,7 @@ function Sort({ onClick, sortBy, setSortBy, count }) {
   };
 
   return (
-    <div className="w-full max-w-[825px] bg-verydarkblue flex justify-between px-6 py-2 md:py-[14px] text-white relative md:mt-10 xl:mt-0 md:rounded-[10px] z-0">
+    <div className="w-full max-w-[825px] bg-verydarkblue flex justify-between px-6 py-2 md:py-[14px] text-white relative md:mt-10 xl:mt-0 md:rounded-[10px]">
       <div className="flex">
         <div className="hidden md:flex md:items-center">
           <img

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Sort({ onClick, sortBy, setSortBy, count }) {
   const [showSortBy, setShowSortBy] = useState(false);
@@ -9,7 +10,7 @@ function Sort({ onClick, sortBy, setSortBy, count }) {
   };
 
   return (
-    <div className="w-full max-w-[825px] bg-verydarkblue flex justify-between px-6 py-2 md:py-[14px] text-white relative md:mt-10 xl:mt-0 md:rounded-[10px]">
+    <div className="w-full max-w-[825px] bg-verydarkblue flex justify-between px-6 py-2 md:py-[14px] text-white relative md:mt-10 xl:mt-0 md:rounded-[10px] z-0">
       <div className="flex">
         <div className="hidden md:flex md:items-center">
           <img
@@ -25,13 +26,13 @@ function Sort({ onClick, sortBy, setSortBy, count }) {
           onClick={() => setShowSortBy(!showSortBy)}
         >
           <span className="text-sm">Sort by : </span>
-          <span className="text-sm font-medium">{sortBy}</span>
+          <span className="text-sm font-medium select-none">{sortBy}</span>
           <img
             src="./assets/shared/arrow-down-white.png"
             alt="icon arrow down"
             className={`${
               showSortBy ? "rotate-180 " : ""
-            } transition-all duration-300 w-[10px] h-[10px]`}
+            } transition-all duration-200 w-[10px] h-[10px]`}
           />
         </div>
       </div>
@@ -42,73 +43,80 @@ function Sort({ onClick, sortBy, setSortBy, count }) {
         + Add Feedback
       </button>
 
-      {showSortBy && (
-        <div className="w-[255px] h-[192px] bg-white shadow absolute z-50 top-[72px] md:top-[88px] md:left-[219px] rounded-[10px]">
-          <div
-            className="flex items-center justify-between"
-            onClick={(e) => handleClick(e)}
+      <AnimatePresence>
+        {showSortBy && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.2 } }}
+            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+            className="w-[255px] h-[192px] bg-white shadow absolute z-50 top-[72px] md:top-[88px] md:left-[219px] rounded-[10px]"
           >
-            <p className="py-3 px-6 text-gray cursor-pointer hover:text-violet">
-              Most Upvotes
-            </p>
-            <img
-              src="./assets/shared/icon-check.svg"
-              alt="icon check"
-              className={`${
-                sortBy === "Most Upvotes" ? "block" : "hidden"
-              } transition-all duration-300 px-6`}
-            />
-          </div>
-          <div className="w-full h-[1px] bg-separator"></div>
-          <div
-            className="flex items-center justify-between"
-            onClick={(e) => handleClick(e)}
-          >
-            <p className="py-3 px-6 text-gray cursor-pointer hover:text-violet">
-              Least Upvotes
-            </p>
-            <img
-              src="./assets/shared/icon-check.svg"
-              alt="icon check"
-              className={`${
-                sortBy === "Least Upvotes" ? "block" : "hidden"
-              } transition-all duration-300 px-6`}
-            />
-          </div>
-          <div className="w-full h-[1px] bg-separator"></div>
-          <div
-            className="flex items-center justify-between"
-            onClick={(e) => handleClick(e)}
-          >
-            <p className="py-3 px-6 text-gray cursor-pointer hover:text-violet">
-              Most Comments
-            </p>
-            <img
-              src="./assets/shared/icon-check.svg"
-              alt="icon check"
-              className={`${
-                sortBy === "Most Comments" ? "block" : "hidden"
-              } transition-all duration-300 px-6`}
-            />
-          </div>
-          <div className="w-full h-[1px] bg-separator"></div>
-          <div
-            className="flex items-center justify-between"
-            onClick={(e) => handleClick(e)}
-          >
-            <p className="py-3 px-6 text-gray cursor-pointer hover:text-violet">
-              Least Comments
-            </p>
-            <img
-              src="./assets/shared/icon-check.svg"
-              alt="icon check"
-              className={`${
-                sortBy === "Least Comments" ? "block" : "hidden"
-              } transition-all duration-300 px-6`}
-            />
-          </div>
-        </div>
-      )}
+            <div
+              className="flex items-center justify-between"
+              onClick={(e) => handleClick(e)}
+            >
+              <p className="py-3 px-6 text-gray cursor-pointer hover:text-violet">
+                Most Upvotes
+              </p>
+              <img
+                src="./assets/shared/icon-check.svg"
+                alt="icon check"
+                className={`${
+                  sortBy === "Most Upvotes" ? "block" : "hidden"
+                } transition-all duration-300 px-6`}
+              />
+            </div>
+            <div className="w-full h-[1px] bg-separator"></div>
+            <div
+              className="flex items-center justify-between"
+              onClick={(e) => handleClick(e)}
+            >
+              <p className="py-3 px-6 text-gray cursor-pointer hover:text-violet">
+                Least Upvotes
+              </p>
+              <img
+                src="./assets/shared/icon-check.svg"
+                alt="icon check"
+                className={`${
+                  sortBy === "Least Upvotes" ? "block" : "hidden"
+                } transition-all duration-300 px-6`}
+              />
+            </div>
+            <div className="w-full h-[1px] bg-separator"></div>
+            <div
+              className="flex items-center justify-between"
+              onClick={(e) => handleClick(e)}
+            >
+              <p className="py-3 px-6 text-gray cursor-pointer hover:text-violet">
+                Most Comments
+              </p>
+              <img
+                src="./assets/shared/icon-check.svg"
+                alt="icon check"
+                className={`${
+                  sortBy === "Most Comments" ? "block" : "hidden"
+                } transition-all duration-300 px-6`}
+              />
+            </div>
+            <div className="w-full h-[1px] bg-separator"></div>
+            <div
+              className="flex items-center justify-between"
+              onClick={(e) => handleClick(e)}
+            >
+              <p className="py-3 px-6 text-gray cursor-pointer hover:text-violet">
+                Least Comments
+              </p>
+              <img
+                src="./assets/shared/icon-check.svg"
+                alt="icon check"
+                className={`${
+                  sortBy === "Least Comments" ? "block" : "hidden"
+                } transition-all duration-300 px-6`}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

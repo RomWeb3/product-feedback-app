@@ -7,6 +7,7 @@ import NewFeedback from "./pages/NewFeedback";
 import EditFeedback from "./pages/EditFeedback";
 import Roadmap from "./pages/Roadmap";
 import useLocalStorage from "use-local-storage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [datas, setDatas] = useLocalStorage("datas", []);
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
